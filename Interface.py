@@ -16,5 +16,11 @@ label2 = Label(text="2. Print emissions of countries where you are")
 label2.place(x=45, y=70)
 label.config(padx=0)
 
+switcher = {
+    1: Label(text="YEAH"),
+    2: Label(text="NOOO"),
+}
+
+choice = Entry()
 
 window.mainloop()
