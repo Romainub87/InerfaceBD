@@ -1,4 +1,5 @@
 from lib2to3.pgen2.token import LEFTSHIFT
+import os
 from re import match
 from tkinter import *
 import sqlite3
@@ -8,8 +9,10 @@ from PIL import ImageTk, Image
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
 from ConvertImage import convertImage
+from os import listdir
+from os.path import isfile, join
+
 
 # Permet de savoir quelle action veut l'utilisateur
 
@@ -34,7 +37,6 @@ def Action1():
 
 def Action2():
     labelAction.config(image=img2)
-
 
 
 # Initialisation de l'interface Tkinter
@@ -80,15 +82,16 @@ imagelabel = Label(
 imagelabel.place(x=1000, y=50)
 
 
-label = Label(text="Liste of commands : ")
+label = Label(text="Liste of commands : ", bg="#ffe599")
 label.place(x=30, y=55)
 label.config(padx=0)
 
-label1 = Label(text="1. Map of the World")
+label1 = Label(text="1. Map of the World", bg="#ffe599")
 label1.place(x=45, y=70)
 label1.config(padx=0)
 
-label2 = Label(text="2. Area repartition in Nouvelle-Aquitaine (percentage)")
+label2 = Label(
+    text="2. Area repartition in Nouvelle-Aquitaine (percentage)", bg="#ffe599")
 label2.place(x=45, y=90)
 label2.config(padx=0)
 
@@ -100,3 +103,8 @@ button.place(x=45, y=150, width=125)
 
 # Lancement de l'interface graphique
 window.mainloop()
+
+#vider la memoire cache
+files = os.listdir("./ImageGen")
+for i in range(0, len(files)):
+    os.remove('./ImageGen'+'/'+files[i])
