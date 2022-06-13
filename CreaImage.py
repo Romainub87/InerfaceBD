@@ -17,7 +17,7 @@ data_Nouvelle_Aquitaine = [ (16, 'Charente', 352015, 5956.0),
 
 data = data_Nouvelle_Aquitaine
 colors = ['red', 'green', 'blue', 'yellow', 'cyan', 'magenta', 'pink', 'turquoise',
-'purple', 'orange', 'gray', 'white']
+'purple', 'orange', 'gray', 'brown']
 plt.title('Pourcentages populations départements Nouvelle-Aquitaine')
 plt.pie([d[2] for d in data],
 labels=[d[1] + ' (' + str(d[0]) + ')' for d in data],

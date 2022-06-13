@@ -1,4 +1,8 @@
+import uuid 
+from PIL import ImageTk, Image
+
 def convertImage(): 
+    filename = str(uuid.uuid4())
     img = Image.open("./Image/figure.png") 
     img = img.convert("RGBA") 
   
@@ -13,5 +17,5 @@ def convertImage():
             newData.append(item) 
   
     img.putdata(newData) 
-    img.save("./Image/New.png", "PNG") 
-    print("Successful") 
+    img.save("Image/figure.png", "PNG") 
+    print("Successful")
