@@ -45,7 +45,7 @@ def choix_action():
         case 1:
             afficherAff()
         case 2:
-            afficherNeg()
+            afficherPie()
 
 
 def afficherAff():
@@ -54,10 +54,10 @@ def afficherAff():
     label.config(padx=0)
 
 
-def afficherNeg():
-    labelAction = Label()
+def afficherPie():
+    img2 = PhotoImage(file='Image/figure.png')
+    labelAction = Label(image=img2, bg="#ffe599")
     labelAction.place(x=300, y=150, width=700, height=500)
-    labelAction.config(padx=0)
 
 
 def donothing():
@@ -106,6 +106,8 @@ label1.config(padx=0)
 label2 = Label(text="2. Print emissions of countries where you are")
 label2.place(x=45, y=70)
 label.config(padx=0)
+
+
 
 
 choice = Entry(text="")
