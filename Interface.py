@@ -24,6 +24,8 @@ data_Nouvelle_Aquitaine = [[16, 'Charente', 352015, 5956.0],
 df = pd.DataFrame(data_Nouvelle_Aquitaine, columns=[
                   'Dept', 'Region', 'Pop', 'Superficie'])
 
+# Permet de créer le graphique matpotlib
+
 
 def pie():
     data = data_Nouvelle_Aquitaine
@@ -39,57 +41,62 @@ def pie():
     plt.axis('equal')
     plt.savefig("Image/figure.png")
 
+# Permet de savoir quelle action veut l'utilisateur
+
 
 def choix_action():
     choix = int(choice.get())
     match choix:
         case 1:
-            afficherAff()
+            Action1()
         case 2:
-            Label(image=PhotoImage(file='Image/figure.png'))
+            Action2()
+
+# Permet de réaliser l'action 1
 
 
-def afficherAff():
-    label = Label(text="Bienvenue")
-    label.place(x=300, y=50)
-    label.config(padx=0)
+def Action1():
+    labelAction.config(image=img3)
+
+# Permet de réaliser l'action 1
 
 
-def afficherPlot(){
-    img2 = PhotoImage(file='Image/figure.png')
-    labelAction = Label(image=img2)
-    labelAction.place(x=350, y=150, width=650, height=500)
-    labelAction.config(padx=0)
-}
+def Action2():
+    labelAction.config(image=img2)
 
 
-def donothing():
-    x = 0
-
-
+# Initialisation de l'interface Tkinter
 window = Tk()
 window.configure(bg="#ffe599")
 window.iconbitmap('Image/logo.ico')
 window.geometry("1920x1080")
 window.title('SensiClimax - CafésPierre')
 
+# Récupération des images des graphiques qui seront utilisés
+img2 = PhotoImage(file='Image/figure.png')
+img3 = PhotoImage(file="Image/modele.png")
+
+# Titre de la fenêtre
 my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
                  font=("Arial", 40))  # setting up the labels
 my_label.pack()
 
 # Création de la MenuBar
-
 menubar = Menu(window)
 filemenu = Menu(menubar, tearoff=0)
-menubar.add_cascade(label="Home", command=donothing())
+menubar.add_cascade(label="Home", command=None)
 menubar.add_cascade(
-    label="C'est quoi l'empreinte carbone ?", command=donothing)
-menubar.add_cascade(label="Nos impacts sur l'environnement", command=donothing)
-menubar.add_cascade(label="Carte du monde", command=donothing)
+    label="C'est quoi l'empreinte carbone ?", command=None)
+menubar.add_cascade(label="Nos impacts sur l'environnement", command=None)
+menubar.add_cascade(label="Carte du monde", command=None)
 menubar.add_cascade(label="Quitter", command=window.quit)
 
 window.config(menu=menubar)
 
+
+# Création du contenu de la fenêtre
+labelAction = Label(window, image=None, bg="#ffe599")
+labelAction.place(x=300, y=150, width=700, height=500)
 
 img = PhotoImage(file='Image/logo.png')
 imagelabel = Label(
@@ -111,12 +118,11 @@ label2 = Label(text="2. Print emissions of countries where you are")
 label2.place(x=45, y=70)
 label.config(padx=0)
 
-
 choice = Entry(text="")
 choice.place(x=45, y=100)
 
 button = Button(text="Print", command=choix_action)
 button.place(x=55, y=150)
 
-
+# Lancement de l'interface graphique
 window.mainloop()
