@@ -1,5 +1,15 @@
-import uuid 
+from fileinput import filename
+from lib2to3.pgen2.token import LEFTSHIFT
+from re import match
+from tkinter import *
+import sqlite3
+from tkinter.font import BOLD
+from turtle import bgcolor, pos, position
+import uuid
 from PIL import ImageTk, Image
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 def convertImage(): 
     filename = str(uuid.uuid4())
@@ -17,5 +27,9 @@ def convertImage():
             newData.append(item) 
   
     img.putdata(newData) 
-    img.save("Image/figure.png", "PNG") 
-    print("Successful")
+    img.save("ImageGen/GEN_"+filename+".png", "PNG") 
+    print("Successfully converted")
+    path = "ImageGen/GEN_"+filename+".png"
+    return path
+    
+

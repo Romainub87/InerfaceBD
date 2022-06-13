@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from ConvertImage import convertImage
+
 # Permet de savoir quelle action veut l'utilisateur
 
 
@@ -35,12 +37,6 @@ def Action2():
 
 
 
-
-
-  
-
-
-
 # Initialisation de l'interface Tkinter
 window = Tk()
 window.minsize(width=1500, height=900)
@@ -51,7 +47,7 @@ window.geometry("1920x1080")
 window.title('SensiClimax - CafésPierre')
 
 # Récupération des images des graphiques qui seront utilisés
-img2 = PhotoImage(file='Image/New.png')
+img2 = PhotoImage(file=convertImage())
 img3 = PhotoImage(file="Image/modele.png")
 
 # Titre de la fenêtre
