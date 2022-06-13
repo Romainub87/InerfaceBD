@@ -36,7 +36,7 @@ def aff():
             shadow=False,
             startangle=90)
     plt.axis('equal')
-    plt.show()
+    plt.savefig("Image/figure.png")
 
 
 def choix_action():
@@ -55,13 +55,14 @@ def afficherAff():
 
 
 def afficherNeg():
-    label = Label(text="C'est non")
-    label.place(x=300, y=50)
-    label.config(padx=0)
+    labelAction = Label()
+    labelAction.place(x=300, y=150, width=700, height=500)
+    labelAction.config(padx=0)
 
 
 def donothing():
-   x = 0
+    x = 0
+
 
 window = Tk()
 window.configure(bg="#ffe599")
@@ -77,7 +78,8 @@ my_label.pack()
 menubar = Menu(window)
 filemenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="Home", command=donothing())
-menubar.add_cascade(label="C'est quoi l'empreinte carbone ?", command=donothing)
+menubar.add_cascade(
+    label="C'est quoi l'empreinte carbone ?", command=donothing)
 menubar.add_cascade(label="Nos impacts sur l'environnement", command=donothing)
 menubar.add_cascade(label="Carte du monde", command=donothing)
 menubar.add_cascade(label="Quitter", command=window.quit)
@@ -105,17 +107,12 @@ label2 = Label(text="2. Print emissions of countries where you are")
 label2.place(x=45, y=70)
 label.config(padx=0)
 
-labelAction = Label()
-labelAction.place(x=300, y=150, width=700, height=500)
-labelAction.config(padx=0)
 
 choice = Entry(text="")
 choice.place(x=45, y=100)
 
 button = Button(text="Print", command=choix_action)
 button.place(x=55, y=150)
-
-
 
 
 window.mainloop()
