@@ -1,3 +1,4 @@
+from enum import auto
 from re import match
 from tkinter import *
 import sqlite3
@@ -45,19 +46,13 @@ def choix_action():
         case 1:
             afficherAff()
         case 2:
-            afficherPie()
+            Label(image=PhotoImage(file='Image/figure.png'))
 
 
 def afficherAff():
     label = Label(text="Bienvenue")
     label.place(x=300, y=50)
     label.config(padx=0)
-
-
-def afficherPie():
-    img2 = PhotoImage(file='Image/figure.png')
-    labelAction = Label(image=img2, bg="#ffe599")
-    labelAction.place(x=300, y=150, width=700, height=500)
 
 
 def donothing():
@@ -74,6 +69,7 @@ my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
                  font=("Arial", 40))  # setting up the labels
 my_label.pack()
 
+# Création de la MenuBar
 
 menubar = Menu(window)
 filemenu = Menu(menubar, tearoff=0)
@@ -107,8 +103,10 @@ label2 = Label(text="2. Print emissions of countries where you are")
 label2.place(x=45, y=70)
 label.config(padx=0)
 
-
-
+img2 = PhotoImage(file='Image/figure.png')
+labelAction = Label(image=img2)
+labelAction.place(x=350, y=150, width=650, height=500)
+labelAction.config(padx=0)
 
 choice = Entry(text="")
 choice.place(x=45, y=100)
