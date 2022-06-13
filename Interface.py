@@ -1,6 +1,13 @@
 from tkinter import *
 import sqlite3
 
+def choix_action(int ):
+    switcher = {
+        1: Label(text="YEAH"),
+        2: Label(text="NOOO"),
+    }
+
+
 window = Tk()
 window.geometry("1920x1080")
 
@@ -16,11 +23,12 @@ label2 = Label(text="2. Print emissions of countries where you are")
 label2.place(x=45, y=70)
 label.config(padx=0)
 
-switcher = {
-    1: Label(text="YEAH"),
-    2: Label(text="NOOO"),
-}
 
-choice = Entry()
+
+choice = Entry(text="")
+choice.place(x=45, y=100)
+
+button = Button(text="Print", command=choix_action)
+button.place(x=55, y=150)
 
 window.mainloop()
