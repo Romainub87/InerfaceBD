@@ -1,4 +1,3 @@
-from enum import auto
 from lib2to3.pgen2.token import LEFTSHIFT
 from re import match
 from tkinter import *
@@ -35,6 +34,13 @@ def Action2():
     labelAction.config(image=img2)
 
 
+
+
+
+  
+
+
+
 # Initialisation de l'interface Tkinter
 window = Tk()
 window.minsize(width=1500, height=900)
@@ -45,7 +51,7 @@ window.geometry("1920x1080")
 window.title('SensiClimax - CafésPierre')
 
 # Récupération des images des graphiques qui seront utilisés
-img2 = PhotoImage(file='Image/figure.png')
+img2 = PhotoImage(file='Image/New.png')
 img3 = PhotoImage(file="Image/modele.png")
 
 # Titre de la fenêtre
@@ -75,7 +81,7 @@ imagelabel = Label(
     window,
     image=img, bg="#ffe599"
 )
-imagelabel.place(x=1000, y=150, )
+imagelabel.place(x=1000, y=50)
 
 
 label = Label(text="Liste of commands : ")
