@@ -25,7 +25,7 @@ df = pd.DataFrame(data_Nouvelle_Aquitaine, columns=[
                   'Dept', 'Region', 'Pop', 'Superficie'])
 
 
-def aff():
+def pie():
     data = data_Nouvelle_Aquitaine
     colors = ['red', 'green', 'blue', 'yellow', 'cyan', 'magenta', 'pink', 'turquoise',
               'purple', 'orange', 'gray', 'white']
@@ -53,6 +53,14 @@ def afficherAff():
     label = Label(text="Bienvenue")
     label.place(x=300, y=50)
     label.config(padx=0)
+
+
+def afficherPlot(){
+    img2 = PhotoImage(file='Image/figure.png')
+    labelAction = Label(image=img2)
+    labelAction.place(x=350, y=150, width=650, height=500)
+    labelAction.config(padx=0)
+}
 
 
 def donothing():
@@ -103,10 +111,6 @@ label2 = Label(text="2. Print emissions of countries where you are")
 label2.place(x=45, y=70)
 label.config(padx=0)
 
-img2 = PhotoImage(file='Image/figure.png')
-labelAction = Label(image=img2)
-labelAction.place(x=350, y=150, width=650, height=500)
-labelAction.config(padx=0)
 
 choice = Entry(text="")
 choice.place(x=45, y=100)
