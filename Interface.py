@@ -37,8 +37,8 @@ def Action2():
 
 # Initialisation de l'interface Tkinter
 window = Tk()
-window.minsize(width=1600, height=900)
-window.maxsize(width=1600, height=900)
+window.minsize(width=1500, height=900)
+window.maxsize(width=1500, height=900)
 window.configure(bg="#ffe599")
 window.iconbitmap('Image/logo.ico')
 window.geometry("1920x1080")
@@ -68,25 +68,25 @@ window.config(menu=menubar)
 
 # Création du contenu de la fenêtre
 labelAction = Label(window, image=None, bg="#ffe599")
-labelAction.place(x=300, y=150, width=700, height=500)
+labelAction.place(x=300, y=150, width=800, height=500)
 
 img = PhotoImage(file='Image/logo.png')
 imagelabel = Label(
     window,
     image=img, bg="#ffe599"
 )
-imagelabel.place(x=1000, y=150)
+imagelabel.place(x=1000, y=150, )
 
 
 label = Label(text="Liste of commands : ")
 label.place(x=30, y=55)
 label.config(padx=0)
 
-label1 = Label(text="1. Print PIB of countries where you are")
+label1 = Label(text="1. Map of the World")
 label1.place(x=45, y=70)
 label1.config(padx=0)
 
-label2 = Label(text="2. Print emissions of countries where you are")
+label2 = Label(text="2. Area repartition in Nouvelle-Aquitaine (percentage)")
 label2.place(x=45, y=90)
 label2.config(padx=0)
 
