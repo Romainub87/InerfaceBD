@@ -6,7 +6,7 @@ from re import match
 from tkinter import *
 import sqlite3
 from tkinter.font import BOLD
-from turtle import bgcolor, onclick, onkeypress, onscreenclick, pos, position
+from turtle import bgcolor, color, onclick, onkeypress, onscreenclick, pos, position
 from PIL import ImageTk, Image
 import matplotlib.pyplot as plt
 import numpy as np
@@ -62,6 +62,7 @@ def Action2():
 def Action3():
     pass
 
+
 def Action4():
     pass
 
@@ -83,7 +84,8 @@ def Action7():
 def menu(display):
     menubar = Menu(display)
     menubar.add_cascade(label="Home", command=window)
-    menubar.add_cascade(label="C'est quoi l'empreinte carbone ?", command=openDisplayProblematique)
+    menubar.add_cascade(label="C'est quoi l'empreinte carbone ?",
+                        command=openDisplayProblematique)
     menubar.add_cascade(label="Nos impacts sur l'environnement", command=None)
     menubar.add_cascade(label="Carte du monde", command=None)
     menubar.add_cascade(label="Quitter", command=display.quit)
@@ -94,71 +96,100 @@ def openDisplayProblematique():
     displayProblematique = Toplevel(window)
     displayProblematique.configure(bg="#ffe599")
     displayProblematique.geometry("1920x1080")
-    displayProblematique.minsize(width=1530, height=900)
-    displayProblematique.maxsize(width=1530, height=900)
+    displayProblematique.minsize(width=1400, height=700)
+    displayProblematique.maxsize(width=1400, height=700)
     displayProblematique.iconbitmap('Image/logo.ico')
     displayProblematique.title('SensiClimax - CafésPierre/Problematique')
     menu(displayProblematique)
 
-    title = Label(displayProblematique, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
-                  bg="#ffe599", height=6, font=("Segoe UI", 15), fg="#660000")
-    title.place(x=10, y=50)
+    title = Label(displayProblematique, text="C'est quoi l'empreinte carbone ?",
+                  bg="#ffe599", font=("Segoe UI", 16))
+    title.place(x=30, y=50)
     title.config(padx=0)
 
-    a = Label(displayProblematique, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
-              bg="#ffe599", height=6, font=("Segoe UI", 12))
-    a.place(x=30, y=100)
-    a.config(padx=0)
+    lab1 = Label(displayProblematique, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
+              bg="#ffe599", font=("Segoe UI Semibold", 12))
+    lab1.place(x=30, y=100)
+    lab1.config(padx=0)
 
-    b = Label(displayProblematique, text="C'est la méthode culture du café qui est a le plus d'impact écologique. Pour faire face a la demande grandissante de la demande, on a tendance aujourd'hui a préférer l'éfficacité au detriment de la qualité en laissant de côté les conséquences environnementale. ", bg="#ffe599", font=("Segoe UI", 12))
-    b.place(x=30, y=150)
-    b.config(padx=0)
+    lab2 = Label(displayProblematique, text="C'est la méthode culture du café qui est a le plus d'impact écologique or pour faire face a la demande grandissante,\non a tendance aujourd'hui a préférer l'efficacité au detriment de la qulab1ité en laissant de côté les conséquences environnementlab1e. ", bg="#ffe599", font=("Segoe UI", 12))
+    lab2.place(x=30, y=150)
+    lab2.config(padx=0)
 
-    label3 = Label(displayProblematique, text="Mettant en péril les sols tropicaux par sa méthode de monoculture, ou encore la déforestation sans compter le transport du café depuis le pays de production. ", bg="#ffe599", font=("Segoe UI", 12))
-    label3.place(x=30, y=200)
-    label3.config(padx=0)
+    lab3 = Label(displayProblematique, text="Mettant en péril les sols tropicaux par sa méthode de monoculture, ou encore la déforestation sans compter le transport du café depuis le pays de production. ", bg="#ffe599", font=("Segoe UI", 12))
+    lab3.place(x=30, y=210)
+    lab3.config(padx=0)
 
-    label4 = Label(displayProblematique, text="Son empreinte est 4,98 kg de CO2 avant torréfaction.", bg="#ffe599", font=("Segoe UI", 12))
-    label4.place(x=30, y=250)
-    label4.config(padx=0)
-
-    label5 = Label(displayProblematique, text="Le saviez vous ?",
+    lab4 = Label(displayProblematique, text="Son empreinte est 4,98 kg de CO2 avant torréfaction.",
                    bg="#ffe599", font=("Segoe UI", 12))
-    label5.place(x=30, y=400)
-    label5.config(padx=0)
+    lab4.place(x=30, y=260)
+    lab4.config(padx=0)
 
-    labelAction2 = Label(displayProblematique, image=None, bg="#ffe599")
-    labelAction2.place(x=900, y=400, width=400, height=500)
+    lab5 = Label(displayProblematique, text="Le saviez vous ?",
+                   bg="#ffe599", font=("Segoe UI", 12))
+    lab5.place(x=30, y=310)
+    lab5.config(padx=0)
 
-    illustration = Image.open("Image/logo.png")
-    illustration = illustration.resize((200, 200), Image.ANTIALIAS)
-    tmpImg = ImageTk.PhotoImage(illustration)
-    illustationLabel = Label(
+    lab6 = Label(displayProblematique, text="Les français, consommateur n°1 de café en capsule, il consitue un facteur important de pollution par sa présence de plastique et lab1luminium et sa diffculté a recycler.",
+                   bg="#ffe599", font=("Segoe UI", 12))
+    lab6.place(x=30, y=360)
+    lab6.config(padx=0)
+
+    illustrationLabel = Label(
         displayProblematique,
-        image=tmpImg, bg="#ffe599"
+        image=img, bg="#ffe599"
     )
-    illustationLabel.place(x=1250, y=25)
+    illustrationLabel.place(x=1150, y=25)
+
+    mamie = PhotoImage('Image/Mamie.png')
+    Illus = Label(displayProblematique, image=mamie)
+    Illus.place(x=45, y=250)
 
     bu = Button(displayProblematique, text="Découvrir les solutions possibles",
-                command=openDisplaySolution, fg="white", bd=1.5)
-    bu.place(x=30, y=800, width=100)
+                command=openDisplaySolution, bg="#11ff11")
+    bu.place(x=1125, y=620, width=200, height=25)
 
 
 def openDisplaySolution():
     diplaySolution = Toplevel(window)
     diplaySolution.configure(bg="#ffe599")
-    diplaySolution.geometry("1920x1080")
-    diplaySolution.minsize(width=1530, height=900)
-    diplaySolution.maxsize(width=1530, height=900)
+    diplaySolution.minsize(width=1400, height=700)
+    diplaySolution.maxsize(width=1400, height=700)
     diplaySolution.iconbitmap('Image/logo.ico')
     diplaySolution.title('SensiClimax - CafésPierre/Problematique/Solution')
     menu(diplaySolution)
 
+    lab1 = Label(diplaySolution, text="Solution pour limiter l'empreinte carbone :", bg="#ffe599", font=("Segoe UI Semibold", 12))
+    lab1.place(x=30, y=100)
+    lab1.config(padx=0)
 
-# Initialisation de l'interface Tkinter
+    lab2 = Label(diplaySolution, text="- Changer de méthode de culture : Utiliser avec parcimoinie les pesticides, arrêter la monoculture", bg="#ffe599", font=("Segoe UI", 12))
+    lab2.place(x=30, y=150)
+    lab2.config(padx=0)
+
+    
+
+    lab3 = Label(diplaySolution, text="- Changer de gamme de produit : Proposer une nouvelle gamme plus responsable mais plus coûteux comme le café d'épeautre, sarrasin torréfié ",
+                   bg="#ffe599", font=("Segoe UI", 12))
+    lab3.place(x=30, y=210)
+    lab3.config(padx=0)
+
+    lab4 = Label(diplaySolution, text="- Proposer des filières dit responsable pour accompagner la production du café",
+                   bg="#ffe599", font=("Segoe UI", 12))
+    lab4.place(x=30, y=260)
+    lab4.config(padx=0)
+
+    illustrationLabel = Label(
+        diplaySolution,
+        image=img, bg="#ffe599"
+    )
+    illustrationLabel.place(x=1150, y=25)
+
+
+# Initilab1isation de l'interface Tkinter
 window = Tk()
-window.minsize(width=1530, height=900)
-window.maxsize(width=1530, height=900)
+window.minsize(width=1400, height=700)
+window.maxsize(width=1400, height=700)
 window.configure(bg="#ffe599")
 window.iconbitmap('Image/logo.ico')
 window.geometry("1920x1080")
@@ -180,16 +211,16 @@ menu(window)
 
 # Création du contenu de la fenêtre
 labelAction = Label(window, image=None, bg="#ffe599")
-labelAction.place(x=350, y=150, width=800, height=500)
+labelAction.place(x=290, y=150, width=800, height=500)
 
 image = Image.open("Image/logo.png")
-image = image.resize((200, 200), Image.ANTIALIAS)
+image = image.resize((200, 200), Image.ANTIlab1IAS)
 img = ImageTk.PhotoImage(image)
 imagelabel = Label(
     window,
     image=img, bg="#ffe599"
 )
-imagelabel.place(x=1250, y=25)
+imagelabel.place(x=1150, y=25)
 
 # Création menu déroulant
 variable = StringVar(window)
