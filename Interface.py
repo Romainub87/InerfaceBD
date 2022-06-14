@@ -14,6 +14,7 @@ from ConvertImage import convertImage
 from os import listdir
 from os.path import isfile, join
 
+
 # Contenu menu déroulant
 OptionList = [
     "Map of the World",
@@ -77,13 +78,15 @@ def Action6():
 def Action7():
     pass
 
+
 def menu(display):
     menubar = Menu(display)
     menubar.add_cascade(label="Home", command=window)
     menubar.add_cascade(label="C'est quoi l'empreinte carbone ?",
                         command=openDisplayProblematique)
-    menubar.add_cascade(label="Nos impacts sur l'environnement", command=openDisplayImpact)
-    menubar.add_cascade(label="Carte du monde", command=None)
+    menubar.add_cascade(
+        label="Nos impacts sur l'environnement", command=openDisplayImpact)
+    menubar.add_cascade(label="Carte du monde", command=openDisplayMap)
     menubar.add_cascade(label="Quitter", command=display.quit)
     display.config(menu=menubar)
 
@@ -106,31 +109,30 @@ def openDisplayImpact():
                  bg="#ffe599", font=("Segoe UI Semibold", 12))
     lab1.place(x=30, y=100)
     lab1.config(padx=0)
-    
-    
+
     ###BUTTONS PAYS###
     bu1 = Button(displayImpact, text="France",
-                command=openDisplaySolution, bg="#03224c",fg="white")
+                 command=openDisplaySolution, bg="#03224c", fg="white")
     bu1.place(x=70, y=150, width=200, height=20)
     bu2 = Button(displayImpact, text="Allemagne",
-                command=openDisplaySolution, bg="#000000",fg="white")
+                 command=openDisplaySolution, bg="#000000", fg="white")
     bu2.place(x=70, y=190, width=200, height=20)
     bu3 = Button(displayImpact, text="Inde",
-                command=openDisplaySolution, bg="#FF9933",fg="white")
+                 command=openDisplaySolution, bg="#FF9933", fg="white")
     bu3.place(x=70, y=220, width=200, height=20)
     bu4 = Button(displayImpact, text="Chine",
-                command=openDisplaySolution, bg="#DE9210",fg="white")
+                 command=openDisplaySolution, bg="#DE9210", fg="white")
     bu4.place(x=70, y=250, width=200, height=20)
     bu5 = Button(displayImpact, text="Etats-Unis",
-                command=openDisplaySolution, bg="#3C3B6E",fg="white")
+                 command=openDisplaySolution, bg="#3C3B6E", fg="white")
     bu5.place(x=70, y=280, width=200, height=20)
     bu6 = Button(displayImpact, text="Danemark",
-                command=openDisplaySolution, bg="#D1050C",fg="white")
+                 command=openDisplaySolution, bg="#D1050C", fg="white")
     bu6.place(x=70, y=310, width=200, height=20)
     bu7 = Button(displayImpact, text="Côte d'Ivoire",
-                command=openDisplaySolution, bg="#F77D0D",fg="white")
+                 command=openDisplaySolution, bg="#F77D0D", fg="white")
     bu7.place(x=70, y=340, width=200, height=20)
-    
+
     labelAction = Label(window, image=None, bg="#ffe599")
     labelAction.place(x=290, y=150, width=800, height=500)
 
@@ -141,18 +143,18 @@ def openDisplayImpact():
     imagelabel.place(x=1150, y=25)
 
     graphe = Label(
-        displayImpact, image=exemple, bg="#ffe599"
+        displayImpact, image=ImageExemple, bg="#ffe599"
     )
     graphe.place(x=500, y=150)
-    
-    lab2 = Label(displayImpact, text="Pollution de l'activité au niveau du pays", bg="#ffe599", font=("Segoe UI", 12))
+
+    lab2 = Label(displayImpact, text="Pollution de l'activité au niveau du pays",
+                 bg="#ffe599", font=("Segoe UI", 12))
     lab2.place(x=500, y=50)
     lab2.config(padx=0)
 
 
-
 def openDisplayProblematique():
-    
+
     displayProblematique = Toplevel(window)
     displayProblematique.configure(bg="#ffe599")
     displayProblematique.geometry("1920x1080")
@@ -201,13 +203,13 @@ def openDisplayProblematique():
     )
     illustrationLabel.place(x=1150, y=25)
 
-    mamie = PhotoImage('Image/Mamie.png')
-    Illus = Label(displayProblematique, image=mamie)
-    Illus.place(x=45, y=250)
+    Illus = Label(displayProblematique, image=imgMamie, bg="#ffe599")
+    Illus.place(x=45, y=450)
 
     bu = Button(displayProblematique, text="Découvrir les solutions possibles",
                 command=openDisplaySolution, bg="#11ff11")
     bu.place(x=1125, y=620, width=200, height=25)
+
 
 def openDisplaySolution():
     displayMap = Toplevel(window)
@@ -218,19 +220,23 @@ def openDisplaySolution():
     displayMap.title('SensiClimax - CafésPierre/Problematique/Solution')
     menu(displayMap)
 
-    lab1 = Label(displayMap, text="Solution pour limiter l'empreinte carbone :", bg="#ffe599", font=("Segoe UI Semibold", 12))
+    lab1 = Label(displayMap, text="Solution pour limiter l'empreinte carbone :",
+                 bg="#ffe599", font=("Segoe UI Semibold", 12))
     lab1.place(x=30, y=100)
     lab1.config(padx=0)
 
-    lab2 = Label(displayMap, text="- Changer de méthode de culture : Utiliser avec parcimoinie les pesticides, arrêter la monoculture", bg="#ffe599", font=("Segoe UI", 12))
+    lab2 = Label(displayMap, text="- Changer de méthode de culture : Utiliser avec parcimoinie les pesticides, arrêter la monoculture",
+                 bg="#ffe599", font=("Segoe UI", 12))
     lab2.place(x=30, y=150)
     lab2.config(padx=0)
 
-    lab3 = Label(displayMap, text="- Changer de gamme de produit : Proposer une nouvelle gamme plus responsable mais plus coûteux comme le café d'épeautre, sarrasin torréfié ", bg="#ffe599", font=("Segoe UI", 12))
+    lab3 = Label(displayMap, text="- Changer de gamme de produit : Proposer une nouvelle gamme plus responsable mais plus coûteux comme le café d'épeautre, sarrasin torréfié ",
+                 bg="#ffe599", font=("Segoe UI", 12))
     lab3.place(x=30, y=210)
     lab3.config(padx=0)
 
-    lab4 = Label(displayMap, text="- Proposer des filières dit responsable pour accompagner la production du café", bg="#ffe599", font=("Segoe UI", 12))
+    lab4 = Label(displayMap, text="- Proposer des filières dit responsable pour accompagner la production du café",
+                 bg="#ffe599", font=("Segoe UI", 12))
     lab4.place(x=30, y=260)
     lab4.config(padx=0)
 
@@ -239,6 +245,10 @@ def openDisplaySolution():
         image=img, bg="#ffe599"
     )
     illustrationLabel.place(x=1150, y=25)
+
+
+def donothing():
+    pass
 
 def openDisplayMap():
     displayMap = Toplevel(window)
@@ -249,27 +259,31 @@ def openDisplayMap():
     displayMap.title('SensiClimax - CafésPierre/Map')
     menu(displayMap)
 
-    lab1 = Label(displayMap, text="Solution pour limiter l'empreinte carbone :", bg="#ffe599", font=("Segoe UI Semibold", 12))
-    lab1.place(x=30, y=100)
-    lab1.config(padx=0)
+    title = Label(displayMap, text="Carte du monde",
+                  bg="#ffe599", font=("FARRAY", 25))
+    title.pack()
+    title.config(padx=0)
 
-    lab2 = Label(displayMap, text="- Changer de méthode de culture : Utiliser avec parcimoinie les pesticides, arrêter la monoculture", bg="#ffe599", font=("Segoe UI", 12))
-    lab2.place(x=30, y=150)
-    lab2.config(padx=0)
+    var = IntVar()
+    R1 = Radiobutton(displayMap, text="Pollution", variable=var, value=1,
+                     command=donothing,bg="#ffe599")
+    R1.place(x=30, y=180)
+    R1.config(padx=0)
 
-    lab3 = Label(displayMap, text="- Changer de gamme de produit : Proposer une nouvelle gamme plus responsable mais plus coûteux comme le café d'épeautre, sarrasin torréfié ", bg="#ffe599", font=("Segoe UI", 12))
-    lab3.place(x=30, y=210)
-    lab3.config(padx=0)
+    R2 = Radiobutton(displayMap, text="Niveau de la mer", variable=var, value=2,
+                     command=donothing,bg="#ffe599")
+    R2.place(x=30, y=210)
+    R2.config(padx=0)
 
-    lab4 = Label(displayMap, text="- Proposer des filières dit responsable pour accompagner la production du café", bg="#ffe599", font=("Segoe UI", 12))
-    lab4.place(x=30, y=260)
-    lab4.config(padx=0)
+    R3 = Radiobutton(displayMap, text="Nombre d'habitants", variable=var, value=3,
+                     command=donothing,bg="#ffe599")
+    R3.place(x=30, y=240)
+    R3.config(padx=0)
+    R4 = Radiobutton(displayMap, text="PIB", variable=var, value=4,
+                     command=donothing,bg="#ffe599")
+    R4.place(x=30, y=270)
+    R4.config(padx=0)
 
-    illustrationLabel = Label(
-        displayMap,
-        image=img, bg="#ffe599"
-    )
-    illustrationLabel.place(x=1150, y=25)
 
 
 # Init1isation de l'interface Tkinter
@@ -283,12 +297,18 @@ window.title('SensiClimax - CafésPierre')
 
 '''Récupération des images des graphiques qui seront utilisés'''
 # planisfère
-map = PhotoImage(file=convertImage("./Image/figure.png"))
+map = PhotoImage(file=convertImage("Image/figure.png"))
 
 # graphique type camembert
 pie = PhotoImage(file="Image/modele.png")
 
-exemple = PhotoImage(file=convertImage("./Image/Pie.png"))
+exemple = Image.open("./Image/Pie.png")
+exemple = exemple.resize((200,200), Image.ANTIALIAS)
+ImageExemple = ImageTk.PhotoImage(convertImage(exemple))
+
+mamie = Image.open("./Image/Mamie.png")
+mamie = mamie.resize((200,200), Image.ANTIALIAS)
+imgMamie = ImageTk.PhotoImage(mamie)
 
 # Titre de la fenêtre
 my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
@@ -301,7 +321,7 @@ menu(window)
 labelAction = Label(window, image=None, bg="#ffe599")
 labelAction.place(x=290, y=150, width=800, height=500)
 
-image = Image.open("Image/logo.png") 
+image = Image.open("Image/logo.png")
 image = image.resize((200, 200), Image.ANTIALIAS)
 img = ImageTk.PhotoImage(image)
 imagelabel = Label(
