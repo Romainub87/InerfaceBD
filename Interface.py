@@ -1,4 +1,3 @@
-
 from lib2to3.pgen2.token import LEFTSHIFT
 from optparse import Option
 import os
@@ -14,7 +13,6 @@ import pandas as pd
 from ConvertImage import convertImage
 from os import listdir
 from os.path import isfile, join
-from Menu import *
 
 # Contenu menu déroulant
 OptionList = [
@@ -254,7 +252,7 @@ labelAction = Label(window, image=None, bg="#ffe599")
 labelAction.place(x=290, y=150, width=800, height=500)
 
 image = Image.open("Image/logo.png")
-image = image.resize((200, 200), Image.ANTIlab1IAS)
+image = image.resize((200, 200), Image.ANTIALIAS)
 img = ImageTk.PhotoImage(image)
 imagelabel = Label(
     window,
