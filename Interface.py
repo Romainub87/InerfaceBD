@@ -285,6 +285,14 @@ def openDisplayMap():
     R4.place(x=30, y=270)
     R4.config(padx=0)
 
+    match str(var.get()):
+        case 1:
+            Action1()
+        case 2:
+            Action2()
+        case 3:
+            Action3()
+
 
 # Init1isation de l'interface Tkinter
 window = Tk()
