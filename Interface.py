@@ -14,6 +14,9 @@ import pandas as pd
 from ConvertImage import convertImage
 from os import listdir
 from os.path import isfile, join
+from Solution import *
+from Problm import *
+from Menu import *
 
 # Contenu menu déroulant
 OptionList = [
@@ -81,15 +84,7 @@ def Action7():
 # Création de la MenuBar
 
 
-def menu(display):
-    menubar = Menu(display)
-    menubar.add_cascade(label="Home", command=window)
-    menubar.add_cascade(label="C'est quoi l'empreinte carbone ?",
-                        command=openDisplayProblematique)
-    menubar.add_cascade(label="Nos impacts sur l'environnement", command=None)
-    menubar.add_cascade(label="Carte du monde", command=None)
-    menubar.add_cascade(label="Quitter", command=display.quit)
-    display.config(menu=menubar)
+
 
 
 def openDisplayProblematique():
@@ -108,7 +103,7 @@ def openDisplayProblematique():
     title.config(padx=0)
 
     lab1 = Label(displayProblematique, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
-              bg="#ffe599", font=("Segoe UI Semibold", 12))
+                 bg="#ffe599", font=("Segoe UI Semibold", 12))
     lab1.place(x=30, y=100)
     lab1.config(padx=0)
 
@@ -121,17 +116,17 @@ def openDisplayProblematique():
     lab3.config(padx=0)
 
     lab4 = Label(displayProblematique, text="Son empreinte est 4,98 kg de CO2 avant torréfaction.",
-                   bg="#ffe599", font=("Segoe UI", 12))
+                 bg="#ffe599", font=("Segoe UI", 12))
     lab4.place(x=30, y=260)
     lab4.config(padx=0)
 
     lab5 = Label(displayProblematique, text="Le saviez vous ?",
-                   bg="#ffe599", font=("Segoe UI", 12))
+                 bg="#ffe599", font=("Segoe UI", 12))
     lab5.place(x=30, y=310)
     lab5.config(padx=0)
 
     lab6 = Label(displayProblematique, text="Les français, consommateur n°1 de café en capsule, il consitue un facteur important de pollution par sa présence de plastique et lab1luminium et sa diffculté a recycler.",
-                   bg="#ffe599", font=("Segoe UI", 12))
+                 bg="#ffe599", font=("Segoe UI", 12))
     lab6.place(x=30, y=360)
     lab6.config(padx=0)
 
@@ -148,42 +143,6 @@ def openDisplayProblematique():
     bu = Button(displayProblematique, text="Découvrir les solutions possibles",
                 command=openDisplaySolution, bg="#11ff11")
     bu.place(x=1125, y=620, width=200, height=25)
-
-
-def openDisplaySolution():
-    diplaySolution = Toplevel(window)
-    diplaySolution.configure(bg="#ffe599")
-    diplaySolution.minsize(width=1400, height=700)
-    diplaySolution.maxsize(width=1400, height=700)
-    diplaySolution.iconbitmap('Image/logo.ico')
-    diplaySolution.title('SensiClimax - CafésPierre/Problematique/Solution')
-    menu(diplaySolution)
-
-    lab1 = Label(diplaySolution, text="Solution pour limiter l'empreinte carbone :", bg="#ffe599", font=("Segoe UI Semibold", 12))
-    lab1.place(x=30, y=100)
-    lab1.config(padx=0)
-
-    lab2 = Label(diplaySolution, text="- Changer de méthode de culture : Utiliser avec parcimoinie les pesticides, arrêter la monoculture", bg="#ffe599", font=("Segoe UI", 12))
-    lab2.place(x=30, y=150)
-    lab2.config(padx=0)
-
-    
-
-    lab3 = Label(diplaySolution, text="- Changer de gamme de produit : Proposer une nouvelle gamme plus responsable mais plus coûteux comme le café d'épeautre, sarrasin torréfié ",
-                   bg="#ffe599", font=("Segoe UI", 12))
-    lab3.place(x=30, y=210)
-    lab3.config(padx=0)
-
-    lab4 = Label(diplaySolution, text="- Proposer des filières dit responsable pour accompagner la production du café",
-                   bg="#ffe599", font=("Segoe UI", 12))
-    lab4.place(x=30, y=260)
-    lab4.config(padx=0)
-
-    illustrationLabel = Label(
-        diplaySolution,
-        image=img, bg="#ffe599"
-    )
-    illustrationLabel.place(x=1150, y=25)
 
 
 # Initilab1isation de l'interface Tkinter
