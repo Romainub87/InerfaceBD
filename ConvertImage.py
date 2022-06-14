@@ -11,9 +11,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-def convertImage(): 
+def convertImage(img): 
     filename = str(uuid.uuid4())
-    img = Image.open("./Image/figure.png") 
+    img = Image.open(img) 
     img = img.convert("RGBA") 
   
     data = img.getdata() 
