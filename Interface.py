@@ -110,26 +110,46 @@ def openDisplayImpact():
     ###BUTTONS PAYS###
     
     bu1 = Button(displayImpact, text="France",
-                command=openDisplaySolution, bg="#11ff11")
+                command=openDisplaySolution, bg="#03224c")
     bu1.place(x=70, y=150, width=200, height=20)
     bu2 = Button(displayImpact, text="Allemagne",
-                command=openDisplaySolution, bg="#11ff11")
+                command=openDisplaySolution, bg="#000000")
     bu2.place(x=70, y=190, width=200, height=20)
     bu3 = Button(displayImpact, text="Inde",
-                command=openDisplaySolution, bg="#11ff11")
+                command=openDisplaySolution, bg="#FF9933")
     bu3.place(x=70, y=220, width=200, height=20)
     bu4 = Button(displayImpact, text="Chine",
-                command=openDisplaySolution, bg="#11ff11")
+                command=openDisplaySolution, bg="#DE9210")
     bu4.place(x=70, y=250, width=200, height=20)
     bu5 = Button(displayImpact, text="Etats-Unis",
-                command=openDisplaySolution, bg="#11ff11")
+                command=openDisplaySolution, bg="#3C3B6E")
     bu5.place(x=70, y=280, width=200, height=20)
     bu6 = Button(displayImpact, text="Danemark",
-                command=openDisplaySolution, bg="#11ff11")
+                command=openDisplaySolution, bg="#D1050C")
     bu6.place(x=70, y=310, width=200, height=20)
     bu7 = Button(displayImpact, text="Côte d'Ivoire",
-                command=openDisplaySolution, bg="#11ff11")
+                command=openDisplaySolution, bg="#F77D0D")
     bu7.place(x=70, y=340, width=200, height=20)
+    
+    labelAction = Label(window, image=None, bg="#ffe599")
+    labelAction.place(x=290, y=150, width=800, height=500)
+
+    image = Image.open("Image/logo.png")
+    image = image.resize((200, 200), Image.ANTIALIAS)
+    img = ImageTk.PhotoImage(displayImpact,image)
+    imagelabel = Label(
+        displayImpact,
+        image=img, bg="#ffe599"
+    )
+    imagelabel.place(x=500, y=100)
+    
+    lab2 = Label(displayImpact, text="Pollution de l'activité au niveau du pays", bg="#ffe599", font=("Segoe UI", 12))
+    lab2.place(x=500, y=300)
+    lab2.config(padx=0)
+
+    
+
+
 
 
 def openDisplayProblematique():
