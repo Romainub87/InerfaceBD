@@ -250,6 +250,7 @@ def openDisplaySolution():
 def donothing():
     pass
 
+
 def openDisplayMap():
     displayMap = Toplevel(window)
     displayMap.configure(bg="#ffe599")
@@ -266,24 +267,23 @@ def openDisplayMap():
 
     var = IntVar()
     R1 = Radiobutton(displayMap, text="Pollution", variable=var, value=1,
-                     command=donothing,bg="#ffe599")
+                     command=donothing, bg="#ffe599")
     R1.place(x=30, y=180)
     R1.config(padx=0)
 
     R2 = Radiobutton(displayMap, text="Niveau de la mer", variable=var, value=2,
-                     command=donothing,bg="#ffe599")
+                     command=donothing, bg="#ffe599")
     R2.place(x=30, y=210)
     R2.config(padx=0)
 
     R3 = Radiobutton(displayMap, text="Nombre d'habitants", variable=var, value=3,
-                     command=donothing,bg="#ffe599")
+                     command=donothing, bg="#ffe599")
     R3.place(x=30, y=240)
     R3.config(padx=0)
     R4 = Radiobutton(displayMap, text="PIB", variable=var, value=4,
-                     command=donothing,bg="#ffe599")
+                     command=donothing, bg="#ffe599")
     R4.place(x=30, y=270)
     R4.config(padx=0)
-
 
 
 # Init1isation de l'interface Tkinter
@@ -303,11 +303,11 @@ map = PhotoImage(file=convertImage("Image/figure.png"))
 pie = PhotoImage(file="Image/modele.png")
 
 exemple = Image.open("./Image/Pie.png")
-exemple = exemple.resize((200,200), Image.ANTIALIAS)
+exemple = exemple.resize((200, 200), Image.ANTIALIAS)
 ImageExemple = ImageTk.PhotoImage(convertImage(exemple))
 
 mamie = Image.open("./Image/Mamie.png")
-mamie = mamie.resize((200,200), Image.ANTIALIAS)
+mamie = mamie.resize((200, 200), Image.ANTIALIAS)
 imgMamie = ImageTk.PhotoImage(mamie)
 
 # Titre de la fenêtre
