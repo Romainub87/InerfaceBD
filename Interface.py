@@ -17,16 +17,18 @@ from os.path import isfile, join
 
 # Contenu menu déroulant
 OptionList = [
-"Map of the World",
-"Area repartition in Nouvelle-Aquitaine",
-"Afficher historique 30 ans du PIB pour chaque Pays",
-"Comparaison des bilans avec conséquence climatique",
-"Causes et origines des émissions des GES",
-"Afficher nombres d'habitant par pays",
-"Empreinte carbone du pays"
+    "Map of the World",
+    "Area repartition in Nouvelle-Aquitaine",
+    "Afficher historique 30 ans du PIB pour chaque Pays",
+    "Comparaison des bilans avec conséquence climatique",
+    "Causes et origines des émissions des GES",
+    "Afficher nombres d'habitant par pays",
+    "Empreinte carbone du pays"
 ]
 
 # Permet de savoir quelle action veut l'utilisateur
+
+
 def choix_action():
     match OptionList.index(variable.get())+1:
         case 1:
@@ -36,64 +38,113 @@ def choix_action():
         case 3:
             openNewWindow()
 
-# Permet de d'afficher le graphe converti 
+# Permet de d'afficher le graphe converti
+
 
 def Action1():
     labelAction.config(image=pie)
 
 # Permet d'afficher un planisfère
+
+
 def Action2():
     labelAction.config(image=map)
 
-def openNewWindow(): 
-    newWindow = Toplevel(window) 
-    newWindow.title("New Window") 
-    newWindow.geometry("200x200")
+# Création de la MenuBar
+
+
+def menu(display):
+    menubar = Menu(display)
+    filemenu = Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="Home", command=None)
+    menubar.add_cascade(label="C'est quoi l'empreinte carbone ?", command=None)
+    menubar.add_cascade(label="Nos impacts sur l'environnement", command=None)
+    menubar.add_cascade(label="Carte du monde", command=None)
+    menubar.add_cascade(label="Quitter", command=display.quit)
+    display.config(menu=menubar)
+
+
+def openNewWindow():
+    newWindow = Toplevel(window)
+    newWindow.title("New Window")
+    newWindow.configure(bg="#ffe599")
+    newWindow.geometry("1920x1080")
+    newWindow.minsize(width=1530, height=900)
+    newWindow.maxsize(width=1530, height=900)
     newWindow.iconbitmap('Image/logo.ico')
-    newWindow.title('SensiClimax - CafésPierre') 
+    newWindow.title('SensiClimax - CafésPierre/Solutions')
+    menu(newWindow)
+
+
+    title = Label(newWindow, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
+              bg="#ffe599", height=6, font=("Segoe UI", 20),)
+    title.place(x=1, y=70)
+    title.config(padx=0)
+
+    a = Label(newWindow, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
+              bg="#ffe599", height=6, font=("Segoe UI", 15))
+    a.place(x=30, y=70)
+    a.config(padx=0)
+
+    b = Label(newWindow, text="C'est la méthode culture du café qui est a le plus d'impact écologique. Pour faire face a la demande grandissante de la demande, on a tendance aujourd'hui a préférer l'éfficacité au detriment de la qualité en laissant de côté les conséquences environnementale. ", bg="#ffe599", font=("Segoe UI", 15))
+    b.place(x=30, y=90)
+    b.config(padx=0)
+
+    label3 = Label(newWindow, text="Mettant en péril les sols tropicaux par sa méthode de monoculture, ou encore la déforestation sans compter le transport du café depuis le pays de production. ", bg="#ffe599", font=("Segoe UI", 15))
+    label3.place(x=30, y=110)
+    label3.config(padx=0)
+
+    label4 = Label(
+        newWindow, text="Son empreinte est 4,98 kg de CO2 avant torréfaction.", bg="#ffe599", font=("Segoe UI", 15))
+    label4.place(x=30, y=130)
+    label4.config(padx=0)
+
+    label5 = Label(newWindow, text="Le saviez vous ?",
+                   bg="#ffe599", font=("Segoe UI", 15))
+    label5.place(x=30, y=150)
+    label5.config(padx=0)
+
+    bu = Button(newWindow, text="Découvrir les solutions possibles",
+                command=choix_action, bg="#083B32", fg="white", bd=1.5)
+    bu.place(x=30, y=800, width=100)
+
 
 # Initialisation de l'interface Tkinter
 window = Tk()
-window.minsize(width=1500, height=900)
-window.maxsize(width=1500, height=900)
+window.minsize(width=1530, height=900)
+window.maxsize(width=1530, height=900)
 window.configure(bg="#ffe599")
 window.iconbitmap('Image/logo.ico')
 window.geometry("1920x1080")
 window.title('SensiClimax - CafésPierre')
 
 '''Récupération des images des graphiques qui seront utilisés'''
-#planisfère
+# planisfère
 map = PhotoImage(file=convertImage())
 
-#graphique type camembert
+# graphique type camembert
 pie = PhotoImage(file="Image/modele.png")
 
 # Titre de la fenêtre
-my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black", font=("FARRAY", 40))  # setting up the labels
+my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
+                 font=("FARRAY", 40))  # setting up the labels
 my_label.pack()
 
-# Création de la MenuBar
-menubar = Menu(window)
-filemenu = Menu(menubar, tearoff=0)
-menubar.add_cascade(label="Home", command=None)
-menubar.add_cascade(label="C'est quoi l'empreinte carbone ?", command=None)
-menubar.add_cascade(label="Nos impacts sur l'environnement", command=None)
-menubar.add_cascade(label="Carte du monde", command=None)
-menubar.add_cascade(label="Quitter", command=window.quit)
-
-window.config(menu=menubar)
+menu(window)
 
 
 # Création du contenu de la fenêtre
 labelAction = Label(window, image=None, bg="#ffe599")
-labelAction.place(x=300, y=150, width=800, height=500)
+labelAction.place(x=350, y=150, width=800, height=500)
 
-img = PhotoImage(file='Image/logo.png')
+image = Image.open("Image/logo.png")
+image = image.resize((200, 200), Image.ANTIALIAS)
+img = ImageTk.PhotoImage(image)
 imagelabel = Label(
     window,
     image=img, bg="#ffe599"
 )
-imagelabel.place(x=1000, y=50)
+imagelabel.place(x=1250, y=25)
 
 # Création menu déroulant
 variable = StringVar(window)
@@ -101,7 +152,7 @@ variable.set(OptionList[0])
 
 opt = OptionMenu(window, variable, *OptionList)
 opt.config(width=15, font=('Helvetica', 10))
-opt.place(x=125, y=75, width=300)
+opt.place(x=45, y=90, width=300)
 
 label = Label(text="Liste of commands : ", bg="#ffe599")
 label.place(x=30, y=55)
@@ -117,6 +168,3 @@ window.mainloop()
 files = os.listdir("./ImageGen")
 for i in range(0, len(files)):
     os.remove('./ImageGen'+'/'+files[i])
-
-
-
