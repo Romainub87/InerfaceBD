@@ -1,5 +1,4 @@
 from lib2to3.pgen2.token import LEFTSHIFT
-from optparse import Option
 import os
 from re import match
 from tkinter import *
@@ -287,11 +286,11 @@ def openDisplayMap():
 
     match str(var.get()):
         case 1:
-            Action1()
+            donothing()
         case 2:
-            Action2()
+            donothing()
         case 3:
-            Action3()
+            donothing()
 
 
 # Init1isation de l'interface Tkinter
