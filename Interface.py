@@ -6,7 +6,7 @@ from re import match
 from tkinter import *
 import sqlite3
 from tkinter.font import BOLD
-from turtle import bgcolor, pos, position
+from turtle import bgcolor, onclick, onkeypress, onscreenclick, pos, position
 from PIL import ImageTk, Image
 import matplotlib.pyplot as plt
 import numpy as np
@@ -36,7 +36,15 @@ def choix_action():
         case 2:
             Action2()
         case 3:
-            openNewWindow()
+            Action3()
+        case 4:
+            Action4()
+        case 5:
+            Action5()
+        case 6:
+            Action6()
+        case 7:
+            Action7()
 
 # Permet de d'afficher le graphe converti
 
@@ -50,63 +58,101 @@ def Action1():
 def Action2():
     labelAction.config(image=map)
 
+
+def Action3():
+    pass
+
+def Action4():
+    pass
+
+
+def Action5():
+    pass
+
+
+def Action6():
+    pass
+
+
+def Action7():
+    pass
+
 # Création de la MenuBar
 
 
 def menu(display):
     menubar = Menu(display)
-    filemenu = Menu(menubar, tearoff=0)
-    menubar.add_cascade(label="Home", command=None)
-    menubar.add_cascade(label="C'est quoi l'empreinte carbone ?", command=None)
+    menubar.add_cascade(label="Home", command=window)
+    menubar.add_cascade(label="C'est quoi l'empreinte carbone ?", command=openDisplayProblematique)
     menubar.add_cascade(label="Nos impacts sur l'environnement", command=None)
     menubar.add_cascade(label="Carte du monde", command=None)
     menubar.add_cascade(label="Quitter", command=display.quit)
     display.config(menu=menubar)
 
 
-def openNewWindow():
-    newWindow = Toplevel(window)
-    newWindow.title("New Window")
-    newWindow.configure(bg="#ffe599")
-    newWindow.geometry("1920x1080")
-    newWindow.minsize(width=1530, height=900)
-    newWindow.maxsize(width=1530, height=900)
-    newWindow.iconbitmap('Image/logo.ico')
-    newWindow.title('SensiClimax - CafésPierre/Solutions')
-    menu(newWindow)
+def openDisplayProblematique():
+    displayProblematique = Toplevel(window)
+    displayProblematique.configure(bg="#ffe599")
+    displayProblematique.geometry("1920x1080")
+    displayProblematique.minsize(width=1530, height=900)
+    displayProblematique.maxsize(width=1530, height=900)
+    displayProblematique.iconbitmap('Image/logo.ico')
+    displayProblematique.title('SensiClimax - CafésPierre/Problematique')
+    menu(displayProblematique)
 
-
-    title = Label(newWindow, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
-              bg="#ffe599", height=6, font=("Segoe UI", 20),)
-    title.place(x=1, y=70)
+    title = Label(displayProblematique, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
+                  bg="#ffe599", height=6, font=("Segoe UI", 15), fg="#660000")
+    title.place(x=10, y=50)
     title.config(padx=0)
 
-    a = Label(newWindow, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
-              bg="#ffe599", height=6, font=("Segoe UI", 15))
-    a.place(x=30, y=70)
+    a = Label(displayProblematique, text="- L'empreinte carbone est un indice de mesure permettant desavoir le taux de gaz a effet de serre dans le monde.",
+              bg="#ffe599", height=6, font=("Segoe UI", 12))
+    a.place(x=30, y=100)
     a.config(padx=0)
 
-    b = Label(newWindow, text="C'est la méthode culture du café qui est a le plus d'impact écologique. Pour faire face a la demande grandissante de la demande, on a tendance aujourd'hui a préférer l'éfficacité au detriment de la qualité en laissant de côté les conséquences environnementale. ", bg="#ffe599", font=("Segoe UI", 15))
-    b.place(x=30, y=90)
+    b = Label(displayProblematique, text="C'est la méthode culture du café qui est a le plus d'impact écologique. Pour faire face a la demande grandissante de la demande, on a tendance aujourd'hui a préférer l'éfficacité au detriment de la qualité en laissant de côté les conséquences environnementale. ", bg="#ffe599", font=("Segoe UI", 12))
+    b.place(x=30, y=150)
     b.config(padx=0)
 
-    label3 = Label(newWindow, text="Mettant en péril les sols tropicaux par sa méthode de monoculture, ou encore la déforestation sans compter le transport du café depuis le pays de production. ", bg="#ffe599", font=("Segoe UI", 15))
-    label3.place(x=30, y=110)
+    label3 = Label(displayProblematique, text="Mettant en péril les sols tropicaux par sa méthode de monoculture, ou encore la déforestation sans compter le transport du café depuis le pays de production. ", bg="#ffe599", font=("Segoe UI", 12))
+    label3.place(x=30, y=200)
     label3.config(padx=0)
 
-    label4 = Label(
-        newWindow, text="Son empreinte est 4,98 kg de CO2 avant torréfaction.", bg="#ffe599", font=("Segoe UI", 15))
-    label4.place(x=30, y=130)
+    label4 = Label(displayProblematique, text="Son empreinte est 4,98 kg de CO2 avant torréfaction.", bg="#ffe599", font=("Segoe UI", 12))
+    label4.place(x=30, y=250)
     label4.config(padx=0)
 
-    label5 = Label(newWindow, text="Le saviez vous ?",
-                   bg="#ffe599", font=("Segoe UI", 15))
-    label5.place(x=30, y=150)
+    label5 = Label(displayProblematique, text="Le saviez vous ?",
+                   bg="#ffe599", font=("Segoe UI", 12))
+    label5.place(x=30, y=400)
     label5.config(padx=0)
 
-    bu = Button(newWindow, text="Découvrir les solutions possibles",
-                command=choix_action, bg="#083B32", fg="white", bd=1.5)
+    labelAction2 = Label(displayProblematique, image=None, bg="#ffe599")
+    labelAction2.place(x=900, y=400, width=400, height=500)
+
+    illustration = Image.open("Image/logo.png")
+    illustration = illustration.resize((200, 200), Image.ANTIALIAS)
+    tmpImg = ImageTk.PhotoImage(illustration)
+    illustationLabel = Label(
+        displayProblematique,
+        image=tmpImg, bg="#ffe599"
+    )
+    illustationLabel.place(x=1250, y=25)
+
+    bu = Button(displayProblematique, text="Découvrir les solutions possibles",
+                command=openDisplaySolution, fg="white", bd=1.5)
     bu.place(x=30, y=800, width=100)
+
+
+def openDisplaySolution():
+    diplaySolution = Toplevel(window)
+    diplaySolution.configure(bg="#ffe599")
+    diplaySolution.geometry("1920x1080")
+    diplaySolution.minsize(width=1530, height=900)
+    diplaySolution.maxsize(width=1530, height=900)
+    diplaySolution.iconbitmap('Image/logo.ico')
+    diplaySolution.title('SensiClimax - CafésPierre/Problematique/Solution')
+    menu(diplaySolution)
 
 
 # Initialisation de l'interface Tkinter
@@ -131,7 +177,6 @@ my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
 my_label.pack()
 
 menu(window)
-
 
 # Création du contenu de la fenêtre
 labelAction = Label(window, image=None, bg="#ffe599")
