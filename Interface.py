@@ -14,8 +14,6 @@ import pandas as pd
 from ConvertImage import convertImage
 from os import listdir
 from os.path import isfile, join
-from Solution import *
-from Problm import *
 from Menu import *
 
 # Contenu menu déroulant
@@ -81,13 +79,63 @@ def Action6():
 def Action7():
     pass
 
-# Création de la MenuBar
+def menu(display):
+    menubar = Menu(display)
+    menubar.add_cascade(label="Home", command=window)
+    menubar.add_cascade(label="C'est quoi l'empreinte carbone ?",
+                        command=openDisplayProblematique)
+    menubar.add_cascade(label="Nos impacts sur l'environnement", command=None)
+    menubar.add_cascade(label="Carte du monde", command=None)
+    menubar.add_cascade(label="Quitter", command=display.quit)
+    display.config(menu=menubar)
 
 
-
+def openDisplayImpact():
+    displayImpact = Toplevel(window)
+    displayImpact.configure(bg="#ffe599")
+    displayImpact.geometry("1920x1080")
+    displayImpact.minsize(width=1400, height=700)
+    displayImpact.maxsize(width=1400, height=700)
+    displayImpact.iconbitmap('Image/logo.ico')
+    displayImpact.title('SensiClimax - CafésPierre/Impact')
+    menu(displayImpact)
+    title = Label(displayImpact, text="Impact de vos activités",
+                  bg="#ffe599", font=("Segoe UI", 18))
+    title.place(x=1125, y=50)
+    title.config(padx=0)
+    lab1 = Label(displayImpact, text="Pays où vous êtes",
+                 bg="#ffe599", font=("Segoe UI Semibold", 12))
+    lab1.place(x=30, y=100)
+    lab1.config(padx=0)
+    
+    
+    ###BUTTONS PAYS###
+    
+    bu1 = Button(displayImpact, text="France",
+                command=openDisplaySolution, bg="#11ff11")
+    bu1.place(x=70, y=150, width=200, height=20)
+    bu2 = Button(displayImpact, text="Allemagne",
+                command=openDisplaySolution, bg="#11ff11")
+    bu2.place(x=70, y=190, width=200, height=20)
+    bu3 = Button(displayImpact, text="Inde",
+                command=openDisplaySolution, bg="#11ff11")
+    bu3.place(x=70, y=220, width=200, height=20)
+    bu4 = Button(displayImpact, text="Chine",
+                command=openDisplaySolution, bg="#11ff11")
+    bu4.place(x=70, y=250, width=200, height=20)
+    bu5 = Button(displayImpact, text="Etats-Unis",
+                command=openDisplaySolution, bg="#11ff11")
+    bu5.place(x=70, y=280, width=200, height=20)
+    bu6 = Button(displayImpact, text="Danemark",
+                command=openDisplaySolution, bg="#11ff11")
+    bu6.place(x=70, y=310, width=200, height=20)
+    bu7 = Button(displayImpact, text="Côte d'Ivoire",
+                command=openDisplaySolution, bg="#11ff11")
+    bu7.place(x=70, y=340, width=200, height=20)
 
 
 def openDisplayProblematique():
+    
     displayProblematique = Toplevel(window)
     displayProblematique.configure(bg="#ffe599")
     displayProblematique.geometry("1920x1080")
@@ -143,6 +191,39 @@ def openDisplayProblematique():
     bu = Button(displayProblematique, text="Découvrir les solutions possibles",
                 command=openDisplaySolution, bg="#11ff11")
     bu.place(x=1125, y=620, width=200, height=25)
+
+def openDisplaySolution():
+    diplaySolution = Toplevel(window)
+    diplaySolution.configure(bg="#ffe599")
+    diplaySolution.minsize(width=1400, height=700)
+    diplaySolution.maxsize(width=1400, height=700)
+    diplaySolution.iconbitmap('Image/logo.ico')
+    diplaySolution.title('SensiClimax - CafésPierre/Problematique/Solution')
+    menu(diplaySolution)
+
+    lab1 = Label(diplaySolution, text="Solution pour limiter l'empreinte carbone :", bg="#ffe599", font=("Segoe UI Semibold", 12))
+    lab1.place(x=30, y=100)
+    lab1.config(padx=0)
+
+    lab2 = Label(diplaySolution, text="- Changer de méthode de culture : Utiliser avec parcimoinie les pesticides, arrêter la monoculture", bg="#ffe599", font=("Segoe UI", 12))
+    lab2.place(x=30, y=150)
+    lab2.config(padx=0)
+
+    lab3 = Label(diplaySolution, text="- Changer de gamme de produit : Proposer une nouvelle gamme plus responsable mais plus coûteux comme le café d'épeautre, sarrasin torréfié ", bg="#ffe599", font=("Segoe UI", 12))
+    lab3.place(x=30, y=210)
+    lab3.config(padx=0)
+
+    lab4 = Label(diplaySolution, text="- Proposer des filières dit responsable pour accompagner la production du café", bg="#ffe599", font=("Segoe UI", 12))
+    lab4.place(x=30, y=260)
+    lab4.config(padx=0)
+
+    illustrationLabel = Label(
+        diplaySolution,
+        image=img, bg="#ffe599"
+    )
+    illustrationLabel.place(x=1150, y=25)
+
+
 
 
 # Initilab1isation de l'interface Tkinter
