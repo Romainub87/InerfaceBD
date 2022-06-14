@@ -104,7 +104,7 @@ button.place(x=45, y=150, width=125)
 # Lancement de l'interface graphique
 window.mainloop()
 
-#vider la memoire cache
+# vider la memoire cache
 files = os.listdir("./ImageGen")
 for i in range(0, len(files)):
     os.remove('./ImageGen'+'/'+files[i])
