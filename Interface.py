@@ -1,4 +1,6 @@
+
 from lib2to3.pgen2.token import LEFTSHIFT
+from optparse import Option
 import os
 from re import match
 from tkinter import *
@@ -12,32 +14,44 @@ import pandas as pd
 from ConvertImage import convertImage
 from os import listdir
 from os.path import isfile, join
+from newWindow import *
 
+# Contenu menu déroulant
+OptionList = [
+"Map of the World",
+"Area repartition in Nouvelle-Aquitaine",
+"Afficher historique 30 ans du PIB pour chaque Pays",
+"Comparaison des bilans avec conséquence climatique",
+"Causes et origines des émissions des GES",
+"Afficher nombres d'habitant par pays",
+"Empreinte carbone du pays"
+]
 
 # Permet de savoir quelle action veut l'utilisateur
-
-
 def choix_action():
-    choix = int(choice.get())
-    choice.delete(0)
-    match choix:
+    match OptionList.index(variable.get())+1:
         case 1:
             Action1()
         case 2:
             Action2()
+        case 3:
+            openNewWindow()
 
-# Permet de réaliser l'action 1
-
+# Permet de d'afficher le graphe converti 
 
 def Action1():
-    labelAction.config(image=img3)
+    labelAction.config(image=pie)
 
-# Permet de réaliser l'action 1
-
-
+# Permet d'afficher un planisfère
 def Action2():
-    labelAction.config(image=img2)
+    labelAction.config(image=map)
 
+def openNewWindow(): 
+    newWindow = Toplevel(window) 
+    newWindow.title("New Window") 
+    newWindow.geometry("200x200")
+    newWindow.iconbitmap('Image/logo.ico')
+    newWindow.title('SensiClimax - CafésPierre') 
 
 # Initialisation de l'interface Tkinter
 window = Tk()
@@ -48,21 +62,22 @@ window.iconbitmap('Image/logo.ico')
 window.geometry("1920x1080")
 window.title('SensiClimax - CafésPierre')
 
-# Récupération des images des graphiques qui seront utilisés
-img2 = PhotoImage(file=convertImage())
-img3 = PhotoImage(file="Image/modele.png")
+'''Récupération des images des graphiques qui seront utilisés'''
+#planisfère
+map = PhotoImage(file=convertImage())
+
+#graphique type camembert
+pie = PhotoImage(file="Image/modele.png")
 
 # Titre de la fenêtre
-my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
-                 font=("FARRAY", 40))  # setting up the labels
+my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black", font=("FARRAY", 40))  # setting up the labels
 my_label.pack()
 
 # Création de la MenuBar
 menubar = Menu(window)
 filemenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="Home", command=None)
-menubar.add_cascade(
-    label="C'est quoi l'empreinte carbone ?", command=None)
+menubar.add_cascade(label="C'est quoi l'empreinte carbone ?", command=None)
 menubar.add_cascade(label="Nos impacts sur l'environnement", command=None)
 menubar.add_cascade(label="Carte du monde", command=None)
 menubar.add_cascade(label="Quitter", command=window.quit)
@@ -81,22 +96,17 @@ imagelabel = Label(
 )
 imagelabel.place(x=1000, y=50)
 
+# Création menu déroulant
+variable = StringVar(window)
+variable.set(OptionList[0])
+
+opt = OptionMenu(window, variable, *OptionList)
+opt.config(width=15, font=('Helvetica', 10))
+opt.place(x=125, y=75, width=300)
 
 label = Label(text="Liste of commands : ", bg="#ffe599")
 label.place(x=30, y=55)
 label.config(padx=0)
-
-label1 = Label(text="1. Map of the World", bg="#ffe599")
-label1.place(x=45, y=70)
-label1.config(padx=0)
-
-label2 = Label(
-    text="2. Area repartition in Nouvelle-Aquitaine (percentage)", bg="#ffe599")
-label2.place(x=45, y=90)
-label2.config(padx=0)
-
-choice = Entry(text="")
-choice.place(x=45, y=120)
 
 button = Button(text="Print", command=choix_action)
 button.place(x=45, y=150, width=125)
@@ -108,3 +118,6 @@ window.mainloop()
 files = os.listdir("./ImageGen")
 for i in range(0, len(files)):
     os.remove('./ImageGen'+'/'+files[i])
+
+
+
