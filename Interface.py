@@ -94,18 +94,6 @@ map = PhotoImage(file=convertImage("Image/figure.png"))
 # graphique type camembert
 pie = PhotoImage(file="Image/modele.png")
 
-exemple = Image.open(convertImage("Image/Pie.png"))
-exemple = exemple.resize((200, 175), Image.ANTIALIAS)
-imgExemple = ImageTk.PhotoImage(exemple)
-
-mamie = Image.open("./Image/Mamie.png")
-mamie = mamie.resize((430, 270), Image.ANTIALIAS)
-imgMamie = ImageTk.PhotoImage(mamie)
-
-chart = Image.open(convertImage("./Image/chart.png"))
-chart = chart.resize((300, 300), Image.ANTIALIAS)
-imgChart = ImageTk.PhotoImage(chart)
-
 # Titre de la fenêtre
 my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
                  font=("FARRAY", 40))  # setting up the labels
