@@ -101,6 +101,7 @@ def openDisplayImpact():
                  bg="#ffe599", font=("Segoe UI", 12))
     lab2.place(x=565, y=350)
     lab2.config(padx=0)
+    
 
 
 def openDisplayProblematique():
