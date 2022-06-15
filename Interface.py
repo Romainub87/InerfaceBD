@@ -70,12 +70,12 @@ def openDisplayImpact():
                  command=openDisplaySolution, bg="#F77D0D", fg="white")
     bu7.place(x=70, y=340, width=200, height=20)
 
-    labelAction = Label(window, image=None, bg="#ffe599")
+    labelAction = Label(displayImpact, image=None, bg="#ffe599")
     labelAction.place(x=290, y=150, width=800, height=500)
 
     imagelabel = Label(
         displayImpact,
-        image=img, bg="#ffe599"
+        image=imgCredit, bg="#ffe599"
     )
     imagelabel.place(x=1150, y=25)
 
@@ -145,7 +145,7 @@ def openDisplayProblematique():
 
     illustrationLabel = Label(
         displayProblematique,
-        image=img, bg="#ffe599"
+        image=imgCredit, bg="#ffe599"
     )
     illustrationLabel.place(x=1150, y=25)
 
@@ -188,19 +188,13 @@ def openDisplaySolution():
 
     illustrationLabel = Label(
         displayMap,
-        image=img, bg="#ffe599"
+        image=imgCredit, bg="#ffe599"
     )
     illustrationLabel.place(x=1150, y=25)
 
 
 def donothing():
     pass
-
-
-def affichageTitre(affichage, type):
-
-    labPollution.place(x=500, y=400)
-    labPollution.config(padx=0)
 
 
 def openDisplayMap():
@@ -247,7 +241,7 @@ def openDisplayMap():
     R4.config(padx=0)
 
     labPollution = Label(displayMap, text='empty',
-                         bg="#ffe599", font=("Segoe UI Semibold", 10))
+                     bg="#ffe599", font=("Segoe UI Semibold", 10))
     labPollution.pack()
     # Cas possibles de la map
 
@@ -255,45 +249,42 @@ def openDisplayMap():
     if (var1.get() == 1 and var2.get() == 0 and var3.get() == 0 and var4.get() == 0):
         labPollution.config(text="SUPERRRRR")
     elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 0 and var4.get() == 0):
-        affichageTitre(displayMap, "Niveau de la mer")
+        labPollution.config(text="SUPERRRRR")
     elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 1 and var4.get() == 0):
-        affichageTitre(displayMap, "Nombre d'habitants")
+        labPollution.config(text="SUPERRRRR")
     elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 0 and var4.get() == 1):
-        affichageTitre(displayMap, "PIB")
+        labPollution.config(text="SUPERRRRR")
 
-    # 2 cas possibles
+   # 2 cas possibles
     elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 0 and var4.get() == 0):
-        affichageTitre(displayMap, "pollution + Niveau de la mer")
+        labPollution.config(text="SUPERRRRR")
     elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 1 and var4.get() == 0):
-        affichageTitre(displayMap, "pollution + Nombre d'habitants")
+        labPollution.config(text="SUPERRRRR")
     elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 0 and var4.get() == 1):
-        affichageTitre(displayMap, "pollution + PIB")
+        labPollution.config(text="SUPERRRRR")
 
     elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 1 and var4.get() == 0):
-        affichageTitre(displayMap, "Niveau de la mer + Nombre d'habitants")
+        labPollution.config(text="SUPERRRRR")
     elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 0 and var4.get() == 1):
-        affichageTitre(displayMap, "Niveau de la mer + PIB")
+        labPollution.config(text="SUPERRRRR")
 
     elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 1 and var4.get() == 1):
-        affichageTitre(displayMap, "PIB + Nombre d'habitants")
+        labPollution.config(text="SUPERRRRR")
 
     # 3 cas possibles
     elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 1 and var4.get() == 0):
-        affichageTitre(
-            displayMap, "pollution + Niveau de la mer + Nombre d'habitants ")
+        labPollution.config(text="SUPERRRRR")
     elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 0 and var4.get() == 1):
-        affichageTitre(displayMap, "pollution + Niveau de la mer + PIB")
+        labPollution.config(text="SUPERRRRR")
 
     elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 1 and var4.get() == 1):
-        affichageTitre(
-            displayMap, " Niveau de la mer + Nombre d'habitants + PIB")
+        labPollution.config(text="SUPERRRRR")
     elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 1 and var4.get() == 1):
-        affichageTitre(displayMap, "pollution  Nombre d'habitants + PIB")
+        labPollution.config(text="SUPERRRRR")
 
     # All in the same time
     elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 1 and var4.get() == 1):
-        affichageTitre(
-            displayMap, "pollution + Niveau de la mer + Nombre d'habitants + PIB")
+        labPollution.config(text="SUPERRRRR")
 
 
 # Init1isation de l'interface Tkinter
@@ -329,6 +320,8 @@ title = Label(text="Bienvenue", bg="#ffe599", fg="Black",
               font=("FARRAY", 40))  # setting up the labels
 title.pack()
 
+
+
 menu(window)
 # Création du contenu de la fenêtre
 labelAction = Label(window, image=None, bg="#ffe599")
@@ -341,6 +334,10 @@ imagelabel = Label(
     image=img, bg="#ffe599"
 )
 imagelabel.place(x=480, y=75)
+
+credit = Image.open("Image/logo.png")
+credit = credit.resize((200, 200), Image.ANTIALIAS)
+imgCredit = ImageTk.PhotoImage(image)
 
 
 label1 = Label(text="Le but de cette application est de comprendre les enjeux que représente nos activités a travers le monde",
