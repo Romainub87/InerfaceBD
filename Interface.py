@@ -78,17 +78,6 @@ def Action7():
     pass
 
 
-def menu(display):
-    menubar = Menu(display)
-    menubar.add_cascade(label="Home", command=window)
-    menubar.add_cascade(label="C'est quoi l'empreinte carbone ?",
-                        command=openDisplayProblematique)
-    menubar.add_cascade(
-        label="Nos impacts sur l'environnement", command=openDisplayImpact)
-    menubar.add_cascade(label="Carte du monde", command=openDisplayMap)
-    menubar.add_cascade(label="Quitter", command=display.quit)
-    display.config(menu=menubar)
-
 
 def openDisplayImpact():
     displayImpact = Toplevel(window)
