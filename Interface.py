@@ -29,6 +29,7 @@ def menu(display):
 
 
 def openDisplayImpact(): 
+    
     displayImpact = Toplevel(window)
     displayImpact.configure(bg="#ffe599")
     displayImpact.geometry("1920x1080")
@@ -47,33 +48,34 @@ def openDisplayImpact():
     lab1.place(x=30, y=100)
     lab1.config(padx=0)
 
+    def openChart(var):
+        match var:
+            case 1 : print("oui")
+            case 2 : print("non")
+
     ###BUTTONS PAYS###
-    bu1 = Button(displayImpact, text="France",
-                 command=openDisplaySolution, bg="#03224c", fg="white")
+    bu1 = Button(displayImpact, text="France", command=lambda *args: openChart(4), bg="#03224c", fg="white")
     bu1.place(x=70, y=150, width=200, height=20)
     bu2 = Button(displayImpact, text="Allemagne",
-                 command=openDisplaySolution, bg="#000000", fg="white")
+                 command=openChart, bg="#000000", fg="white")
     bu2.place(x=70, y=190, width=200, height=20)
     bu3 = Button(displayImpact, text="Inde",
-                 command=openDisplaySolution, bg="#FF9933", fg="white")
+                 command=openChart, bg="#FF9933", fg="white")
     bu3.place(x=70, y=220, width=200, height=20)
     bu4 = Button(displayImpact, text="Chine",
-                 command=openDisplaySolution, bg="#DE9210", fg="white")
+                 command=openChart, bg="#DE9210", fg="white")
     bu4.place(x=70, y=250, width=200, height=20)
     bu5 = Button(displayImpact, text="Etats-Unis",
-                 command=openDisplaySolution, bg="#3C3B6E", fg="white")
+                 command=openChart, bg="#3C3B6E", fg="white")
     bu5.place(x=70, y=280, width=200, height=20)
-    bu6 = Button(displayImpact, text="Danemark",
-                 
-                 command=openDisplaySolution, bg="#D1050C", fg="white")
+    bu6 = Button(displayImpact, text="Danemark",                
+                 command=openChart, bg="#D1050C", fg="white")
     bu6.place(x=70, y=310, width=200, height=20)
     bu7 = Button(displayImpact, text="Côte d'Ivoire",
-                 command=openDisplaySolution, bg="#F77D0D", fg="white")
+                 command=openChart, bg="#F77D0D", fg="white")
     bu7.place(x=70, y=340, width=200, height=20)
-
     labelAction = Label(displayImpact, image=None, bg="#ffe599")
     labelAction.place(x=290, y=150, width=800, height=500)
-
     image5 = Image.open(convertImage("Image/logo.png"))
     image5 = image5.resize((200, 200), Image.ANTIALIAS)
     img5 = ImageTk.PhotoImage(image5)
@@ -103,9 +105,10 @@ def openDisplayImpact():
     lab2.config(padx=0)
     
 
+    
+
 
 def openDisplayProblematique():
-
     displayProblematique = Toplevel(window)
     displayProblematique.configure(bg="#ffe599")
     displayProblematique.geometry("1920x1080")
@@ -202,7 +205,6 @@ def openDisplaySolution():
         image=img3, bg="#ffe599"
     )
     labelGraph.place(x=1150, y=25)
-
 
 def donothing():
     pass
@@ -346,7 +348,6 @@ def openDisplayMap():
     R4.place(x=30, y=270)
 
 # Init1isation de l'interface Tkinter
-
 
 if (len(os.listdir("./ImageGen")) == 0):
     CreationImage()
