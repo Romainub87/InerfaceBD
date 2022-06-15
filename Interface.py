@@ -5,6 +5,8 @@ from tkinter import *
 import sqlite3
 from tkinter.font import BOLD
 from turtle import bgcolor, color, onclick, onkeypress, onscreenclick, pos, position
+from webbrowser import get
+from xmlrpc.client import boolean
 from PIL import ImageTk, Image
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,70 +14,6 @@ import pandas as pd
 from ConvertImage import convertImage
 from os import listdir
 from os.path import isfile, join
-
-
-# Contenu menu déroulant
-OptionList = [
-    "Map of the World",
-    "Area repartition in Nouvelle-Aquitaine",
-    "Afficher historique 30 ans du PIB pour chaque Pays",
-    "Comparaison des bilans avec conséquence climatique",
-    "Causes et origines des émissions des GES",
-    "Afficher nombres d'habitant par pays",
-    "Empreinte carbone du pays"
-]
-
-# Permet de savoir quelle action veut l'utilisateur
-
-
-def choix_action():
-    match OptionList.index(variable.get())+1:
-        case 1:
-            Action1()
-        case 2:
-            Action2()
-        case 3:
-            Action3()
-        case 4:
-            Action4()
-        case 5:
-            Action5()
-        case 6:
-            Action6()
-        case 7:
-            Action7()
-
-# Permet de d'afficher le graphe converti
-
-
-def Action1():
-    labelAction.config(image=pie)
-
-# Permet d'afficher un planisfère
-
-
-def Action2():
-    labelAction.config(image=map)
-
-
-def Action3():
-    pass
-
-
-def Action4():
-    pass
-
-
-def Action5():
-    pass
-
-
-def Action6():
-    pass
-
-
-def Action7():
-    pass
 
 
 def menu(display):
@@ -259,6 +197,12 @@ def donothing():
     pass
 
 
+def affichageTitre(affichage, type):
+
+    labPollution.place(x=500, y=400)
+    labPollution.config(padx=0)
+
+
 def openDisplayMap():
     displayMap = Toplevel(window)
     displayMap.configure(bg="#ffe599")
@@ -273,40 +217,84 @@ def openDisplayMap():
     title.pack()
     title.config(padx=0)
 
+    lab1 = Label(displayMap, text="Choisissez votre valeur de mesure ( plusieurs choix possibles): ",
+                 bg="#ffe599", font=("Segoe UI Semibold", 10))
+    lab1.place(x=30, y=130)
+    lab1.config(padx=0)
+
     ##radioButton##
-    var = IntVar()
-    R1 = Radiobutton(displayMap, text="Pollution", variable=var, value=1,
-                     command=donothing, bg="#ffe599")
+    var1 = IntVar()
+    R1 = Checkbutton(displayMap, text="Pollution", variable=var1, onvalue=1, offvalue=0,
+                     bg="#ffe599")
     R1.place(x=30, y=180)
     R1.config(padx=0)
-
-    R2 = Radiobutton(displayMap, text="Niveau de la mer", variable=var, value=2,
-                     command=donothing, bg="#ffe599")
+    var2 = IntVar()
+    R2 = Checkbutton(displayMap, text="Niveau de la mer", variable=var2, onvalue=1, offvalue=0,
+                     bg="#ffe599")
     R2.place(x=30, y=210)
     R2.config(padx=0)
 
-    R3 = Radiobutton(displayMap, text="Nombre d'habitants", variable=var, value=3,
-                     command=donothing, bg="#ffe599")
+    var3 = IntVar()
+    R3 = Checkbutton(displayMap, text="Nombre d'habitants", variable=var3, onvalue=1, offvalue=0,
+                     bg="#ffe599")
     R3.place(x=30, y=240)
     R3.config(padx=0)
-    R4 = Radiobutton(displayMap, text="PIB", variable=var, value=4,
-                     command=donothing, bg="#ffe599")
+
+    var4 = IntVar()
+    R4 = Checkbutton(displayMap, text="PIB", variable=var4, onvalue=1, offvalue=0,
+                     bg="#ffe599")
     R4.place(x=30, y=270)
     R4.config(padx=0)
 
-    match str(var.get()):
-        #Pollution
-        case 1:
-            donothing()
-        #Niveau de la mer
-        case 2:
-            donothing()
-        #Nombre d'habitants
-        case 3:
-            donothing()
-        #PIB
-        case 4:
-            donothing()
+    labPollution = Label(displayMap, text='empty',
+                         bg="#ffe599", font=("Segoe UI Semibold", 10))
+    labPollution.pack()
+    # Cas possibles de la map
+
+    # 1 seul cas possible
+    if (var1.get() == 1 and var2.get() == 0 and var3.get() == 0 and var4.get() == 0):
+        labPollution.config(text="SUPERRRRR")
+    elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 0 and var4.get() == 0):
+        affichageTitre(displayMap, "Niveau de la mer")
+    elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 1 and var4.get() == 0):
+        affichageTitre(displayMap, "Nombre d'habitants")
+    elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 0 and var4.get() == 1):
+        affichageTitre(displayMap, "PIB")
+
+    # 2 cas possibles
+    elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 0 and var4.get() == 0):
+        affichageTitre(displayMap, "pollution + Niveau de la mer")
+    elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 1 and var4.get() == 0):
+        affichageTitre(displayMap, "pollution + Nombre d'habitants")
+    elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 0 and var4.get() == 1):
+        affichageTitre(displayMap, "pollution + PIB")
+
+    elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 1 and var4.get() == 0):
+        affichageTitre(displayMap, "Niveau de la mer + Nombre d'habitants")
+    elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 0 and var4.get() == 1):
+        affichageTitre(displayMap, "Niveau de la mer + PIB")
+
+    elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 1 and var4.get() == 1):
+        affichageTitre(displayMap, "PIB + Nombre d'habitants")
+
+    # 3 cas possibles
+    elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 1 and var4.get() == 0):
+        affichageTitre(
+            displayMap, "pollution + Niveau de la mer + Nombre d'habitants ")
+    elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 0 and var4.get() == 1):
+        affichageTitre(displayMap, "pollution + Niveau de la mer + PIB")
+
+    elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 1 and var4.get() == 1):
+        affichageTitre(
+            displayMap, " Niveau de la mer + Nombre d'habitants + PIB")
+    elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 1 and var4.get() == 1):
+        affichageTitre(displayMap, "pollution  Nombre d'habitants + PIB")
+
+    # All in the same time
+    elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 1 and var4.get() == 1):
+        affichageTitre(
+            displayMap, "pollution + Niveau de la mer + Nombre d'habitants + PIB")
+
 
 # Init1isation de l'interface Tkinter
 window = Tk()
@@ -337,38 +325,31 @@ chart = chart.resize((300, 300), Image.ANTIALIAS)
 imgChart = ImageTk.PhotoImage(chart)
 
 # Titre de la fenêtre
-my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
-                 font=("FARRAY", 40))  # setting up the labels
-my_label.pack()
+title = Label(text="Bienvenue", bg="#ffe599", fg="Black",
+              font=("FARRAY", 40))  # setting up the labels
+title.pack()
 
 menu(window)
 # Création du contenu de la fenêtre
 labelAction = Label(window, image=None, bg="#ffe599")
 labelAction.place(x=290, y=150, width=800, height=500)
-
 image = Image.open("Image/logo.png")
-image = image.resize((200, 200), Image.ANTIALIAS)
+image = image.resize((450, 450), Image.ANTIALIAS)
 img = ImageTk.PhotoImage(image)
 imagelabel = Label(
     window,
     image=img, bg="#ffe599"
 )
-imagelabel.place(x=1150, y=25)
+imagelabel.place(x=480, y=75)
 
-# Création menu déroulant
-variable = StringVar(window)
-variable.set(OptionList[0])
 
-opt = OptionMenu(window, variable, *OptionList)
-opt.config(width=15, font=('Helvetica', 10))
-opt.place(x=45, y=90, width=300)
+label1 = Label(text="Le but de cette application est de comprendre les enjeux que représente nos activités a travers le monde",
+               bg="#ffe599", font=("Segoe UI Semibold", 12))
+label1.place(x=330, y=550)
+label1.config(padx=0)
 
-label = Label(text="Liste of commands : ", bg="#ffe599")
-label.place(x=30, y=55)
-label.config(padx=0)
-
-button = Button(text="Print", command=choix_action)
-button.place(x=45, y=150, width=125)
+button = Button(text="Découvrir", command=donothing, bg="#16B84E", fg="White")
+button.place(x=640, y=600, width=125)
 
 # Lancement de l'interface graphique
 window.mainloop()
