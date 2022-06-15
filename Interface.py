@@ -142,13 +142,13 @@ def openDisplayImpact():
     imagelabel.place(x=1150, y=25)
 
     graphe = Label(
-        displayImpact, image=img, bg="#ffe599"
+        displayImpact, image=imgExemple, bg="#ffe599"
     )
-    graphe.place(x=500, y=150)
+    graphe.place(x=650, y=430)
 
     lab2 = Label(displayImpact, text="Pollution de l'activité au niveau du pays",
                  bg="#ffe599", font=("Segoe UI", 12))
-    lab2.place(x=500, y=50)
+    lab2.place(x=620, y=640)
     lab2.config(padx=0)
 
 
@@ -202,8 +202,8 @@ def openDisplayProblematique():
     )
     illustrationLabel.place(x=1150, y=25)
 
-    Illus = Label(displayProblematique, image=img, bg="#ffe599")
-    Illus.place(x=45, y=450)
+    Illus = Label(displayProblematique, image=imgMamie, bg="#ffe599")
+    Illus.place(x=250, y=410)
 
     bu = Button(displayProblematique, text="Découvrir les solutions possibles",
                 command=openDisplaySolution, bg="#11ff11")
@@ -308,6 +308,14 @@ map = PhotoImage(file=convertImage("Image/figure.png"))
 
 # graphique type camembert
 pie = PhotoImage(file="Image/modele.png")
+
+exemple = Image.open(convertImage("Image/Pie.png"))
+exemple = exemple.resize((200,200), Image.ANTIALIAS)
+imgExemple = ImageTk.PhotoImage(exemple)
+
+mamie = Image.open("./Image/Mamie.png")
+mamie = mamie.resize((430,270), Image.ANTIALIAS)
+imgMamie = ImageTk.PhotoImage(mamie)
 
 
 # Titre de la fenêtre
