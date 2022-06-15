@@ -140,20 +140,24 @@ def openDisplayImpact():
         image=img, bg="#ffe599"
     )
     imagelabel.place(x=1150, y=25)
-    
+
     imageChart = Label(
         displayImpact, image=imgChart, bg="#ffe599"
     )
-    imageChart.place(x=500, y=50)
+    imageChart.place(x=550, y=50)
+
+    legende1 = Label(displayImpact, text="Pollution au niveau mondial de vos activités",
+                     bg="#ffe599", font=("Segoe UI", 12))
+    legende1.place(x=550, y=620)
 
     graphe = Label(
         displayImpact, image=imgExemple, bg="#ffe599"
     )
-    graphe.place(x=650, y=430)
+    graphe.place(x=600, y=430)
 
     lab2 = Label(displayImpact, text="Pollution de l'activité au niveau du pays",
                  bg="#ffe599", font=("Segoe UI", 12))
-    lab2.place(x=620, y=640)
+    lab2.place(x=565, y=350)
     lab2.config(padx=0)
 
 
@@ -269,6 +273,7 @@ def openDisplayMap():
     title.pack()
     title.config(padx=0)
 
+    ##radioButton##
     var = IntVar()
     R1 = Radiobutton(displayMap, text="Pollution", variable=var, value=1,
                      command=donothing, bg="#ffe599")
@@ -290,13 +295,18 @@ def openDisplayMap():
     R4.config(padx=0)
 
     match str(var.get()):
+        #Pollution
         case 1:
             donothing()
+        #Niveau de la mer
         case 2:
             donothing()
+        #Nombre d'habitants
         case 3:
             donothing()
-
+        #PIB
+        case 4:
+            donothing()
 
 # Init1isation de l'interface Tkinter
 window = Tk()
@@ -315,7 +325,7 @@ map = PhotoImage(file=convertImage("Image/figure.png"))
 pie = PhotoImage(file="Image/modele.png")
 
 exemple = Image.open(convertImage("Image/Pie.png"))
-exemple = exemple.resize((150, 125), Image.ANTIALIAS)
+exemple = exemple.resize((200, 175), Image.ANTIALIAS)
 imgExemple = ImageTk.PhotoImage(exemple)
 
 mamie = Image.open("./Image/Mamie.png")
@@ -332,7 +342,6 @@ my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
 my_label.pack()
 
 menu(window)
-
 # Création du contenu de la fenêtre
 labelAction = Label(window, image=None, bg="#ffe599")
 labelAction.place(x=290, y=150, width=800, height=500)
