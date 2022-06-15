@@ -241,7 +241,7 @@ def openDisplayMap():
     R4.config(padx=0)
 
     labPollution = Label(displayMap, text='empty',
-                     bg="#ffe599", font=("Segoe UI Semibold", 10))
+                         bg="#ffe599", font=("Segoe UI Semibold", 10))
     labPollution.pack()
     # Cas possibles de la map
 
@@ -319,7 +319,6 @@ imgChart = ImageTk.PhotoImage(chart)
 title = Label(text="Bienvenue", bg="#ffe599", fg="Black",
               font=("FARRAY", 40))  # setting up the labels
 title.pack()
-
 
 
 menu(window)
