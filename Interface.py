@@ -28,8 +28,8 @@ def menu(display):
     display.config(menu=menubar)
 
 
-def openDisplayImpact(): 
-    
+def openDisplayImpact():
+
     displayImpact = Toplevel(window)
     displayImpact.configure(bg="#ffe599")
     displayImpact.geometry("1920x1080")
@@ -50,16 +50,17 @@ def openDisplayImpact():
 
     def openChart(var):
         match var:
-            case 1 : print("oui")
-            case 2 : print("non")
-            case 3 : print("non")
-            case 4 : print("non")
-            case 5 : print("non")
-            case 6 : print("non")
-            case 7 : print("non")
+            case 1: print("oui")
+            case 2: print("non")
+            case 3: print("non")
+            case 4: print("non")
+            case 5: print("non")
+            case 6: print("non")
+            case 7: print("non")
 
     ###BUTTONS PAYS###
-    bu1 = Button(displayImpact, text="France", command=lambda *args: openChart(1), bg="#03224c", fg="white")
+    bu1 = Button(displayImpact, text="France",
+                 command=lambda *args: openChart(1), bg="#03224c", fg="white")
     bu1.place(x=70, y=150, width=200, height=20)
     bu2 = Button(displayImpact, text="Allemagne",
                  command=lambda *args: openChart(2), bg="#000000", fg="white")
@@ -73,47 +74,42 @@ def openDisplayImpact():
     bu5 = Button(displayImpact, text="Etats-Unis",
                  command=lambda *args: openChart(5), bg="#3C3B6E", fg="white")
     bu5.place(x=70, y=280, width=200, height=20)
-    bu6 = Button(displayImpact, text="Danemark",                
+    bu6 = Button(displayImpact, text="Danemark",
                  command=lambda *args: openChart(6), bg="#D1050C", fg="white")
     bu6.place(x=70, y=310, width=200, height=20)
     bu7 = Button(displayImpact, text="Côte d'Ivoire",
                  command=lambda *args: openChart(7), bg="#F77D0D", fg="white")
     bu7.place(x=70, y=340, width=200, height=20)
-    
-    
-    
+
     labelAction = Label(displayImpact, image=None, bg="#ffe599")
     labelAction.place(x=290, y=150, width=800, height=500)
-    image5 = Image.open(convertImage("Image/logo.png"))
-    image5 = image5.resize((200, 200), Image.ANTIALIAS)
-    img5 = ImageTk.PhotoImage(image5)
+    logoAvt = Image.open(convertImage("Image/logo.png"))
+    logoAvt = logoAvt.resize((200, 200), Image.ANTIALIAS)
+    logo = ImageTk.PhotoImage(logoAvt)
     labelGraph = Label(
         displayImpact,
-        image=img5, bg="#ffe599"
+        image=logo, bg="#ffe599"
     )
     labelGraph.place(x=1150, y=25)
 
-    imageChart = Label(
-        displayImpact, image=imgChart, bg="#ffe599"
+
+    imageChart2 = Label(
+        displayImpact, image=imgChart2, bg="#ffe599"
     )
-    imageChart.place(x=550, y=50)
+    imageChart2.place(x=550, y=50)
 
     legende1 = Label(displayImpact, text="Pollution au niveau mondial de vos activités",
                      bg="#ffe599", font=("Segoe UI", 12))
     legende1.place(x=550, y=620)
 
     graphe = Label(
-        displayImpact, image=imgExemple, bg="#ffe599"
+        displayImpact, image=imgChart1, bg="#ffe599"
     )
     graphe.place(x=600, y=430)
 
     lab2 = Label(displayImpact, text="Pollution de l'activité au niveau du pays",
                  bg="#ffe599", font=("Segoe UI", 12))
     lab2.place(x=565, y=350)
-    
-
-    
-
 
 def openDisplayProblematique():
     displayProblematique = Toplevel(window)
@@ -204,14 +200,15 @@ def openDisplaySolution():
     lab4.place(x=30, y=260)
     lab4.config(padx=0)
 
-    image3 = Image.open(convertImage("Image/logo.png"))
-    image3 = image3.resize((200, 200), Image.ANTIALIAS)
-    img3 = ImageTk.PhotoImage(image3)
+    logoAvt = Image.open(convertImage("Image/logo.png"))
+    logoAvt = logoAvt.resize((200, 200), Image.ANTIALIAS)
+    logo = ImageTk.PhotoImage(logoAvt)
     labelGraph = Label(
         displayMap,
-        image=img3, bg="#ffe599"
+        image=logo, bg="#ffe599"
     )
     labelGraph.place(x=1150, y=25)
+
 
 def donothing():
     pass
@@ -356,6 +353,7 @@ def openDisplayMap():
 
 # Init1isation de l'interface Tkinter
 
+
 if (len(os.listdir("./ImageGen")) == 0):
     CreationImage()
 
@@ -373,17 +371,17 @@ elif (len(os.listdir("./ImageGen")) > 0):
 
     # graphique type camembert
 
-    exemple = Image.open(convertImage("Image/Pie.png"))
-    exemple = exemple.resize((200, 175), Image.ANTIALIAS)
-    imgExemple = ImageTk.PhotoImage(exemple)
+    chart1 = Image.open(convertImage("Image/Pie.png"))
+    chart1 = chart1.resize((200, 175), Image.ANTIALIAS)
+    imgChart1 = ImageTk.PhotoImage(chart1)
 
     mamie = Image.open("./Image/Mamie.png")
     mamie = mamie.resize((430, 270), Image.ANTIALIAS)
     imgMamie = ImageTk.PhotoImage(mamie)
 
-    chart = Image.open(convertImage("./Image/chart.png"))
-    chart = chart.resize((300, 300), Image.ANTIALIAS)
-    imgChart = ImageTk.PhotoImage(chart)
+    chart2 = Image.open(convertImage("./Image/chart.png"))
+    chart2 = chart2.resize((300, 300), Image.ANTIALIAS)
+    imgChart2 = ImageTk.PhotoImage(chart2)
 
     # Titre de la fenêtre
     title = Label(text="Bienvenue", bg="#ffe599", fg="Black",
