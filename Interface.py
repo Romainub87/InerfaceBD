@@ -295,18 +295,19 @@ def openDisplayMap():
     R4.config(padx=0)
 
     match str(var.get()):
-        #Pollution
+        # Pollution
         case 1:
             donothing()
-        #Niveau de la mer
+        # Niveau de la mer
         case 2:
             donothing()
-        #Nombre d'habitants
+        # Nombre d'habitants
         case 3:
             donothing()
-        #PIB
+        # PIB
         case 4:
             donothing()
+
 
 # Init1isation de l'interface Tkinter
 window = Tk()
