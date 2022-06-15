@@ -52,28 +52,36 @@ def openDisplayImpact():
         match var:
             case 1 : print("oui")
             case 2 : print("non")
+            case 3 : print("non")
+            case 4 : print("non")
+            case 5 : print("non")
+            case 6 : print("non")
+            case 7 : print("non")
 
     ###BUTTONS PAYS###
-    bu1 = Button(displayImpact, text="France", command=lambda *args: openChart(4), bg="#03224c", fg="white")
+    bu1 = Button(displayImpact, text="France", command=lambda *args: openChart(1), bg="#03224c", fg="white")
     bu1.place(x=70, y=150, width=200, height=20)
     bu2 = Button(displayImpact, text="Allemagne",
-                 command=openChart, bg="#000000", fg="white")
+                 command=lambda *args: openChart(2), bg="#000000", fg="white")
     bu2.place(x=70, y=190, width=200, height=20)
     bu3 = Button(displayImpact, text="Inde",
-                 command=openChart, bg="#FF9933", fg="white")
+                 command=lambda *args: openChart(3), bg="#FF9933", fg="white")
     bu3.place(x=70, y=220, width=200, height=20)
     bu4 = Button(displayImpact, text="Chine",
-                 command=openChart, bg="#DE9210", fg="white")
+                 command=lambda *args: openChart(4), bg="#DE9210", fg="white")
     bu4.place(x=70, y=250, width=200, height=20)
     bu5 = Button(displayImpact, text="Etats-Unis",
-                 command=openChart, bg="#3C3B6E", fg="white")
+                 command=lambda *args: openChart(5), bg="#3C3B6E", fg="white")
     bu5.place(x=70, y=280, width=200, height=20)
     bu6 = Button(displayImpact, text="Danemark",                
-                 command=openChart, bg="#D1050C", fg="white")
+                 command=lambda *args: openChart(6), bg="#D1050C", fg="white")
     bu6.place(x=70, y=310, width=200, height=20)
     bu7 = Button(displayImpact, text="Côte d'Ivoire",
-                 command=openChart, bg="#F77D0D", fg="white")
+                 command=lambda *args: openChart(7), bg="#F77D0D", fg="white")
     bu7.place(x=70, y=340, width=200, height=20)
+    
+    
+    
     labelAction = Label(displayImpact, image=None, bg="#ffe599")
     labelAction.place(x=290, y=150, width=800, height=500)
     image5 = Image.open(convertImage("Image/logo.png"))
@@ -102,7 +110,6 @@ def openDisplayImpact():
     lab2 = Label(displayImpact, text="Pollution de l'activité au niveau du pays",
                  bg="#ffe599", font=("Segoe UI", 12))
     lab2.place(x=565, y=350)
-    lab2.config(padx=0)
     
 
     
