@@ -228,7 +228,7 @@ def openDisplayMap():
     labGraphe.place(x=0, y=445)
 
     labMap = Label(displayMap, bg="#ffe599")
-    labMap.place(x=500, y=125)
+    labMap.place(x=450, y=125)
 
     imgG = Image.open(
         "./Image/graphe.png").resize((350, 250), Image.ANTIALIAS)
@@ -237,6 +237,10 @@ def openDisplayMap():
     imgD = Image.open(
         "./Image/graphique.png").resize((350, 250), Image.ANTIALIAS)
     imgDG = ImageTk.PhotoImage(imgD)
+
+    map = PhotoImage(file=convertImage("ImageGen/figure.png"))
+
+    pie = PhotoImage(file="Image/modele.png")
 
     def isClick():
 
@@ -255,7 +259,7 @@ def openDisplayMap():
             labMap.config(image=map)
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 0)):
             labPollution.config(text="Nb d'habitant")
-            labGraphe.config(image=None)
+            labMap.config(image=pie)
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 1)):
             labPollution.config(text="PIB")
             labGraphe.config(image=None)
@@ -357,10 +361,7 @@ if (len(os.listdir("./ImageGen")) > 0):
     '''Récupération des images des graphiques qui seront utilisés'''
     # planisfère
 
-    map = PhotoImage(file=convertImage("ImageGen/figure.png"))
-
     # graphique type camembert
-    pie = PhotoImage(file="Image/modele.png")
 
     exemple = Image.open(convertImage("Image/Pie.png"))
     exemple = exemple.resize((200, 175), Image.ANTIALIAS)
@@ -401,7 +402,8 @@ if (len(os.listdir("./ImageGen")) > 0):
     label1.place(x=330, y=550)
     label1.config(padx=0)
 
-    button = Button(text="Découvrir", command=donothing, bg="#16B84E", fg="White")
+    button = Button(text="Découvrir", command=donothing,
+                    bg="#16B84E", fg="White")
     button.place(x=640, y=600, width=125)
 
     # Lancement de l'interface graphique
