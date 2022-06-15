@@ -140,6 +140,11 @@ def openDisplayImpact():
         image=img, bg="#ffe599"
     )
     imagelabel.place(x=1150, y=25)
+    
+    imageChart = Label(
+        displayImpact, image=imgChart, bg="#ffe599"
+    )
+    imageChart.place(x=500, y=50)
 
     graphe = Label(
         displayImpact, image=imgExemple, bg="#ffe599"
@@ -310,13 +315,16 @@ map = PhotoImage(file=convertImage("Image/figure.png"))
 pie = PhotoImage(file="Image/modele.png")
 
 exemple = Image.open(convertImage("Image/Pie.png"))
-exemple = exemple.resize((200,200), Image.ANTIALIAS)
+exemple = exemple.resize((150, 125), Image.ANTIALIAS)
 imgExemple = ImageTk.PhotoImage(exemple)
 
 mamie = Image.open("./Image/Mamie.png")
-mamie = mamie.resize((430,270), Image.ANTIALIAS)
+mamie = mamie.resize((430, 270), Image.ANTIALIAS)
 imgMamie = ImageTk.PhotoImage(mamie)
 
+chart = Image.open(convertImage("./Image/chart.png"))
+chart = chart.resize((300, 300), Image.ANTIALIAS)
+imgChart = ImageTk.PhotoImage(chart)
 
 # Titre de la fenêtre
 my_label = Label(text="Bienvenue", bg="#ffe599", fg="Black",
