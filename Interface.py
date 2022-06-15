@@ -224,13 +224,16 @@ def openDisplayMap():
     labPollution.place(x=600, y=350)
 
     labGraphe = Label(displayMap, bg="#ffe599")
-    labGraphe.place(x=0, y=495)
+    labGraphe.place(x=0, y=445)
+    
+    labMap = Label(displayMap, bg="#ffe599")
+    labMap.place(x=500, y=125)
 
     imgG = Image.open(
-        "./Image/graphe.png").resize((350, 200), Image.ANTIALIAS)
+        "./Image/graphe.png").resize((350, 250), Image.ANTIALIAS)
     imgGraph = ImageTk.PhotoImage(imgG)
     
-    imgD = Image.open("./Image/graphique.png").resize((350, 200), Image.ANTIALIAS)
+    imgD = Image.open("./Image/graphique.png").resize((350, 250), Image.ANTIALIAS)
     imgDG = ImageTk.PhotoImage(imgD)
 
     def isClick():
@@ -243,6 +246,7 @@ def openDisplayMap():
         elif ((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Pollution")
             labGraphe.config(image=imgGraph)
+            labMap.config(image=img)
         elif((var1.get() == 0) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Niveau de la mer")
             labGraphe.config(image=imgDG)
