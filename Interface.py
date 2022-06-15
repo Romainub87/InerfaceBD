@@ -213,55 +213,62 @@ def openDisplayMap():
     labPollution = Label(displayMap,
                          bg="#ffe599", font=("Segoe UI Semibold", 10))
     labPollution.pack()
-labelGraph
+
+
     
-    labelGraphe
     
-    # Cas possibles de la map
-    # 1 seul cas possible
+    image = Image.open("Image/logo.png")
+    image = image.resize((200, 200), Image.ANTIALIAS)
+    img = ImageTk.PhotoImage(image)
+    labelGraph = Label(
+        displayMap,
+        image=img, bg="grey"
+    )
+    labelGraph.place(x=30, y=350)
+
     def isClick():
-        print(var1.get() + var2.get() + var3.get() + var4.get())
+                
+        # Aucun sélectionné
         if ((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 0)):
-            labPollution.config(text="")
+            labPollution.config(text="Aucun sélectionné")
+        
+        # 1 sélectionné
         elif ((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Pollution")
         elif((var1.get() == 0) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Niveau de la mer")
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 0)):
             labPollution.config(text="Nb d'habitant")
-        elif((var1.get()) == 0 & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 1)):
+        elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 1)):
             labPollution.config(text="PIB")
-
-     # 2 cas possibles
+        
+        # 2 sélectionnés
         elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 0 )& (var4.get() == 0)):
             labPollution.config(text="Pollution/ Niveau de la mer")
-        elif((var1.get()) == 1 & (var2.get() == 0 )& (var3.get() == 1) & (var4.get() == 0)):
+        elif((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 0)):
             labPollution.config(text="Pollution/ Nb d'habitant")
         elif((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 1)):
             labPollution.config(text="Pollution / PIB")
-
         elif((var1.get() == 0) & (var2.get() == 1) & (var3.get() == 1) & (var4.get() == 0)):
-            labPollution.config(text="R")
+            labPollution.config(text="Niveau de la mer / Nb d'habitant")
         elif((var1.get() == 0) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 1)):
-            labPollution.config(text="T")
-
+            labPollution.config(text="Niveau de la mer / PIB")
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 1) & var4.get() == 1):
-            labPollution.config(text="S")
-
-     # 3 cas possibles
+            labPollution.config(text="Nb d'habitant / PIB")
+        
+        # 3 sélectionnés
         elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 1) & (var4.get() == 0)):
-            labPollution.config(text="U")
+            labPollution.config(text="Pollution / Niveau de la mer / Nb d'habitant")
         elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 1)):
-            labPollution.config(text="E")
-
+            labPollution.config(text="Pollution / Niveau de la mer / PIB")
         elif(var1.get() == 0) & (var2.get() == 1 & (var3.get() == 1) & (var4.get() == 1)):
-            labPollution.config(text="V")
-        elif(var1.get() == 1) & (var2.get() == 0 & (var3.get() == 1) & (var4.get() == 1)):
-            labPollution.config(text="Z")
-
-        # All in the same time
+            labPollution.config(text="Niveau de la mer / Nb d'habitant / PIB")
+        elif((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 1)):
+            labPollution.config(text="Pollution / Nb d'habitant / PIB")
+        
+        # Tous sélectionnés
         elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 1) & (var4.get() == 1)):
-            labPollution.config(text="P")
+            labPollution.config(text="Tous sélectionnés")
 
 
     lab1 = Label(displayMap, text="Choisissez votre valeur de mesure ( plusieurs choix possibles): ",
