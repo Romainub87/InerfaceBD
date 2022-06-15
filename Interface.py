@@ -13,6 +13,7 @@ import pandas as pd
 from ConvertImage import convertImage
 from os import listdir
 from os.path import isfile, join
+from CreaImage import *
 
 
 def menu(display):
@@ -225,15 +226,16 @@ def openDisplayMap():
 
     labGraphe = Label(displayMap, bg="#ffe599")
     labGraphe.place(x=0, y=445)
-    
+
     labMap = Label(displayMap, bg="#ffe599")
     labMap.place(x=500, y=125)
 
     imgG = Image.open(
         "./Image/graphe.png").resize((350, 250), Image.ANTIALIAS)
     imgGraph = ImageTk.PhotoImage(imgG)
-    
-    imgD = Image.open("./Image/graphique.png").resize((350, 250), Image.ANTIALIAS)
+
+    imgD = Image.open(
+        "./Image/graphique.png").resize((350, 250), Image.ANTIALIAS)
     imgDG = ImageTk.PhotoImage(imgD)
 
     def isClick():
@@ -250,6 +252,7 @@ def openDisplayMap():
         elif((var1.get() == 0) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Niveau de la mer")
             labGraphe.config(image=imgDG)
+            labMap.config(image=map)
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 0)):
             labPollution.config(text="Nb d'habitant")
             labGraphe.config(image=None)
@@ -336,71 +339,77 @@ def openDisplayMap():
                      onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
     R4.place(x=30, y=270)
 
-
 # Init1isation de l'interface Tkinter
-window = Tk()
-window.minsize(width=1400, height=700)
-window.maxsize(width=1400, height=700)
-window.configure(bg="#ffe599")
-window.iconbitmap('Image/logo.ico')
-window.geometry("1920x1080")
-window.title('SensiClimax - CafésPierre')
-
-'''Récupération des images des graphiques qui seront utilisés'''
-# planisfère
-map = PhotoImage(file=convertImage("Image/figure.png"))
-
-# graphique type camembert
-pie = PhotoImage(file="Image/modele.png")
-
-exemple = Image.open(convertImage("Image/Pie.png"))
-exemple = exemple.resize((200, 175), Image.ANTIALIAS)
-imgExemple = ImageTk.PhotoImage(exemple)
-
-mamie = Image.open("./Image/Mamie.png")
-mamie = mamie.resize((430, 270), Image.ANTIALIAS)
-imgMamie = ImageTk.PhotoImage(mamie)
-
-chart = Image.open(convertImage("./Image/chart.png"))
-chart = chart.resize((300, 300), Image.ANTIALIAS)
-imgChart = ImageTk.PhotoImage(chart)
-
-# Titre de la fenêtre
-title = Label(text="Bienvenue", bg="#ffe599", fg="Black",
-              font=("FARRAY", 40))  # setting up the labels
-title.pack()
 
 
-menu(window)
-# Création du contenu de la fenêtre
-labelAction = Label(window, image=None, bg="#ffe599")
-labelAction.place(x=290, y=150, width=800, height=500)
-image = Image.open("Image/logo.png")
-image = image.resize((450, 450), Image.ANTIALIAS)
-img = ImageTk.PhotoImage(image)
-imagelabel = Label(
-    window,
-    image=img, bg="#ffe599"
-)
-imagelabel.place(x=480, y=75)
+if (len(os.listdir("./ImageGen")) == 0):
+    CreationImage()
 
-credit = Image.open("Image/logo.png")
-credit = credit.resize((200, 200), Image.ANTIALIAS)
-imgCredit = ImageTk.PhotoImage(image)
+if (len(os.listdir("./ImageGen")) > 0):
+    window = Tk()
+    window.minsize(width=1400, height=700)
+    window.maxsize(width=1400, height=700)
+    window.configure(bg="#ffe599")
+    window.iconbitmap('Image/logo.ico')
+    window.geometry("1920x1080")
+    window.title('SensiClimax - CafésPierre')
 
+    '''Récupération des images des graphiques qui seront utilisés'''
+    # planisfère
 
-label1 = Label(text="Le but de cette application est de comprendre les enjeux que représente nos activités a travers le monde",
-               bg="#ffe599", font=("Segoe UI Semibold", 12))
-label1.place(x=330, y=550)
-label1.config(padx=0)
+    map = PhotoImage(file=convertImage("ImageGen/figure.png"))
 
-button = Button(text="Découvrir", command=donothing, bg="#16B84E", fg="White")
-button.place(x=640, y=600, width=125)
+    # graphique type camembert
+    pie = PhotoImage(file="Image/modele.png")
 
-# Lancement de l'interface graphique
-window.mainloop()
+    exemple = Image.open(convertImage("Image/Pie.png"))
+    exemple = exemple.resize((200, 175), Image.ANTIALIAS)
+    imgExemple = ImageTk.PhotoImage(exemple)
+
+    mamie = Image.open("./Image/Mamie.png")
+    mamie = mamie.resize((430, 270), Image.ANTIALIAS)
+    imgMamie = ImageTk.PhotoImage(mamie)
+
+    chart = Image.open(convertImage("./Image/chart.png"))
+    chart = chart.resize((300, 300), Image.ANTIALIAS)
+    imgChart = ImageTk.PhotoImage(chart)
+
+    # Titre de la fenêtre
+    title = Label(text="Bienvenue", bg="#ffe599", fg="Black",
+                  font=("FARRAY", 40))  # setting up the labels
+    title.pack()
+
+    menu(window)
+    # Création du contenu de la fenêtre
+    labelAction = Label(window, image=None, bg="#ffe599")
+    labelAction.place(x=290, y=150, width=800, height=500)
+    image = Image.open("Image/logo.png")
+    image = image.resize((450, 450), Image.ANTIALIAS)
+    img = ImageTk.PhotoImage(image)
+    imagelabel = Label(
+        window,
+        image=img, bg="#ffe599"
+    )
+    imagelabel.place(x=480, y=75)
+
+    credit = Image.open("Image/logo.png")
+    credit = credit.resize((200, 200), Image.ANTIALIAS)
+    imgCredit = ImageTk.PhotoImage(image)
+
+    label1 = Label(text="Le but de cette application est de comprendre les enjeux que représente nos activités a travers le monde",
+                   bg="#ffe599", font=("Segoe UI Semibold", 12))
+    label1.place(x=330, y=550)
+    label1.config(padx=0)
+
+    button = Button(text="Découvrir", command=donothing, bg="#16B84E", fg="White")
+    button.place(x=640, y=600, width=125)
+
+    # Lancement de l'interface graphique
+
+    window.mainloop()
 
 # vider la memoire cache
-files = os.listdir("./ImageGen")
-for i in range(0, len(files)):
-    os.remove('./ImageGen'+'/'+files[i])
+if (window.destroy):
+    files = os.listdir("./ImageGen")
+    for i in range(0, len(files)):
+        os.remove('./ImageGen'+'/'+files[i])
