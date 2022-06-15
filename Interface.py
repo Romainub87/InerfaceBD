@@ -72,11 +72,14 @@ def openDisplayImpact():
     labelAction = Label(displayImpact, image=None, bg="#ffe599")
     labelAction.place(x=290, y=150, width=800, height=500)
 
-    imagelabel = Label(
+    image2 = Image.open(convertImage("Image/logo.png"))
+    image2 = image2.resize((200, 200), Image.ANTIALIAS)
+    img2 = ImageTk.PhotoImage(image2)
+    labelGraph = Label(
         displayImpact,
-        image=imgCredit, bg="#ffe599"
+        image=img2, bg="#ffe599"
     )
-    imagelabel.place(x=1150, y=25)
+    labelGraph.place(x=1150, y=25)
 
     imageChart = Label(
         displayImpact, image=imgChart, bg="#ffe599"
@@ -142,11 +145,14 @@ def openDisplayProblematique():
     lab6.place(x=30, y=360)
     lab6.config(padx=0)
 
-    illustrationLabel = Label(
+    image2 = Image.open(convertImage("Image/logo.png"))
+    image2 = image2.resize((200, 200), Image.ANTIALIAS)
+    img2 = ImageTk.PhotoImage(image2)
+    labelGraph = Label(
         displayProblematique,
-        image=imgCredit, bg="#ffe599"
+        image=img2, bg="#ffe599"
     )
-    illustrationLabel.place(x=1150, y=25)
+    labelGraph.place(x=1150, y=25)
 
     Illus = Label(displayProblematique, image=imgMamie, bg="#ffe599")
     Illus.place(x=250, y=410)
@@ -185,11 +191,14 @@ def openDisplaySolution():
     lab4.place(x=30, y=260)
     lab4.config(padx=0)
 
-    illustrationLabel = Label(
+    image2 = Image.open(convertImage("Image/logo.png"))
+    image2 = image2.resize((200, 200), Image.ANTIALIAS)
+    img2 = ImageTk.PhotoImage(image2)
+    labelGraph = Label(
         displayMap,
-        image=imgCredit, bg="#ffe599"
+        image=img2, bg="#ffe599"
     )
-    illustrationLabel.place(x=1150, y=25)
+    labelGraph.place(x=1150, y=25)
 
 
 def donothing():
@@ -212,38 +221,33 @@ def openDisplayMap():
 
     labPollution = Label(displayMap,
                          bg="#ffe599", font=("Segoe UI Semibold", 10))
-    labPollution.pack()
-
-
+    labPollution.place(x=600, y=350)
     
-    
-    image = Image.open("Image/logo.png")
-    image = image.resize((200, 200), Image.ANTIALIAS)
-    img = ImageTk.PhotoImage(image)
-    labelGraph = Label(
-        displayMap,
-        image=img, bg="grey"
-    )
-    labelGraph.place(x=30, y=350)
+    labGraphe = Label(displayMap, bg="#ffe599")
+    labGraphe.place(x=600, y=450)
 
     def isClick():
-                
+
         # Aucun sélectionné
         if ((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Aucun sélectionné")
-        
+
         # 1 sélectionné
         elif ((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Pollution")
+            imgG = Image.open("./Image/graphe.png")
+            imgG = imgG.resize((450, 200), Image.ANTIALIAS)
+            imgGraph = ImageTk.PhotoImage(imgG)
+            labGraphe.config(image=imgGraph)
         elif((var1.get() == 0) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Niveau de la mer")
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 0)):
             labPollution.config(text="Nb d'habitant")
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 1)):
             labPollution.config(text="PIB")
-        
+
         # 2 sélectionnés
-        elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 0 )& (var4.get() == 0)):
+        elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Pollution/ Niveau de la mer")
         elif((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 0)):
             labPollution.config(text="Pollution/ Nb d'habitant")
@@ -255,50 +259,59 @@ def openDisplayMap():
             labPollution.config(text="Niveau de la mer / PIB")
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 1) & var4.get() == 1):
             labPollution.config(text="Nb d'habitant / PIB")
-        
+
         # 3 sélectionnés
         elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 1) & (var4.get() == 0)):
-            labPollution.config(text="Pollution / Niveau de la mer / Nb d'habitant")
+            labPollution.config(
+                text="Pollution / Niveau de la mer / Nb d'habitant")
         elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 1)):
             labPollution.config(text="Pollution / Niveau de la mer / PIB")
         elif(var1.get() == 0) & (var2.get() == 1 & (var3.get() == 1) & (var4.get() == 1)):
             labPollution.config(text="Niveau de la mer / Nb d'habitant / PIB")
         elif((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 1)):
             labPollution.config(text="Pollution / Nb d'habitant / PIB")
-        
+
         # Tous sélectionnés
         elif((var1.get() == 1) & (var2.get() == 1) & (var3.get() == 1) & (var4.get() == 1)):
             labPollution.config(text="Tous sélectionnés")
-
 
     lab1 = Label(displayMap, text="Choisissez votre valeur de mesure ( plusieurs choix possibles): ",
                  bg="#ffe599", font=("Segoe UI Semibold", 10))
     lab1.place(x=30, y=130)
     lab1.config(padx=0)
 
+    image2 = Image.open(convertImage("Image/logo.png"))
+    image2 = image2.resize((200, 200), Image.ANTIALIAS)
+    img2 = ImageTk.PhotoImage(image2)
+    labelGraph = Label(
+        displayMap,
+        image=img2, bg="#ffe599"
+    )
+    labelGraph.place(x=1150, y=25)
+
     ##radioButton##
     var1 = IntVar()
     var1.set(0)
     R1 = Checkbutton(displayMap, text="Pollution", variable=var1,
-                     onvalue=1, offvalue=0, command=isClick)
+                     onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
     R1.place(x=30, y=180)
 
     var2 = IntVar()
     var2.set(0)
     R2 = Checkbutton(displayMap, text="Niveau de la mer",
-                     variable=var2, onvalue=1, offvalue=0, command=isClick)
+                     variable=var2, onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
     R2.place(x=30, y=210)
 
     var3 = IntVar()
     var3.set(0)
     R3 = Checkbutton(displayMap, text="Nombre d'habitants",
-                     variable=var3, onvalue=1, offvalue=0, command=isClick)
+                     variable=var3, onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
     R3.place(x=30, y=240)
 
     var4 = IntVar()
     var4.set(0)
     R4 = Checkbutton(displayMap, text="PIB", variable=var4,
-                     onvalue=1, offvalue=0, command=isClick)
+                     onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
     R4.place(x=30, y=270)
 
 
