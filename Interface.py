@@ -219,24 +219,24 @@ def openDisplayMap():
     ##radioButton##
     var1 = IntVar()
     R1 = Checkbutton(displayMap, text="Pollution", variable=var1, onvalue=1, offvalue=0,
-                     bg="#ffe599")
+                     bg="#ffe599", command=isClick)
     R1.place(x=30, y=180)
     R1.config(padx=0)
     var2 = IntVar()
     R2 = Checkbutton(displayMap, text="Niveau de la mer", variable=var2, onvalue=1, offvalue=0,
-                     bg="#ffe599")
+                     bg="#ffe599", command=isClick)
     R2.place(x=30, y=210)
     R2.config(padx=0)
 
     var3 = IntVar()
     R3 = Checkbutton(displayMap, text="Nombre d'habitants", variable=var3, onvalue=1, offvalue=0,
-                     bg="#ffe599")
+                     bg="#ffe599", command=isClick)
     R3.place(x=30, y=240)
     R3.config(padx=0)
 
     var4 = IntVar()
     R4 = Checkbutton(displayMap, text="PIB", variable=var4, onvalue=1, offvalue=0,
-                     bg="#ffe599")
+                     bg="#ffe599", command=isClick)
     R4.place(x=30, y=270)
     R4.config(padx=0)
 
@@ -244,47 +244,50 @@ def openDisplayMap():
                          bg="#ffe599", font=("Segoe UI Semibold", 10))
     labPollution.pack()
     # Cas possibles de la map
-
     # 1 seul cas possible
-    if (var1.get() == 1 and var2.get() == 0 and var3.get() == 0 and var4.get() == 0):
-        labPollution.config(text="SUPERRRRR")
-    elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 0 and var4.get() == 0):
-        labPollution.config(text="SUPERRRRR")
-    elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 1 and var4.get() == 0):
-        labPollution.config(text="SUPERRRRR")
-    elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 0 and var4.get() == 1):
-        labPollution.config(text="SUPERRRRR")
 
-   # 2 cas possibles
-    elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 0 and var4.get() == 0):
-        labPollution.config(text="SUPERRRRR")
-    elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 1 and var4.get() == 0):
-        labPollution.config(text="SUPERRRRR")
-    elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 0 and var4.get() == 1):
-        labPollution.config(text="SUPERRRRR")
+    def isClick():
+        if (var1.get() == 1 & var2.get() == 0 & var3.get() == 0 & var4.get() == 0):
+            labPollution.config(text="SUPERR")
+        elif(var1.get() == 0 & var2.get() == 1 & var3.get() == 0 & var4.get() == 0):
+            labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 0 & var2.get() == 0 & var3.get() == 1 & var4.get() == 0):
+            labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 0 & var2.get() == 0 & var3.get() == 0 & var4.get() == 1):
+            labPollution.config(text="SUPERRRRR")
 
-    elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 1 and var4.get() == 0):
-        labPollution.config(text="SUPERRRRR")
-    elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 0 and var4.get() == 1):
-        labPollution.config(text="SUPERRRRR")
+     # 2 cas possibles
+        elif(var1.get() == 1 & var2.get() == 1 & var3.get() == 0 & var4.get() == 0):
+            labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 1 & var2.get() == 0 & var3.get() == 1 & var4.get() == 0):
+            labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 1 & var2.get() == 0 & var3.get() == 0 & var4.get() == 1):
+            labPollution.config(text="SUPERRRRR")
 
-    elif(var1.get() == 0 and var2.get() == 0 and var3.get() == 1 and var4.get() == 1):
-        labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 0 & var2.get() == 1 & var3.get() == 1 & var4.get() == 0):
+            labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 0 & var2.get() == 1 & var3.get() == 0 & var4.get() == 1):
+            labPollution.config(text="SUPERRRRR")
 
-    # 3 cas possibles
-    elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 1 and var4.get() == 0):
-        labPollution.config(text="SUPERRRRR")
-    elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 0 and var4.get() == 1):
-        labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 0 & var2.get() == 0 & var3.get() == 1 & var4.get() == 1):
+            labPollution.config(text="S")
 
-    elif(var1.get() == 0 and var2.get() == 1 and var3.get() == 1 and var4.get() == 1):
-        labPollution.config(text="SUPERRRRR")
-    elif(var1.get() == 1 and var2.get() == 0 and var3.get() == 1 and var4.get() == 1):
-        labPollution.config(text="SUPERRRRR")
+     # 3 cas possibles
+        elif(var1.get() == 1 & var2.get() == 1 & var3.get() == 1 & var4.get() == 0):
+            labPollution.config(text="")
+        elif(var1.get() == 1 & var2.get() == 1 & var3.get() == 0 & var4.get() == 1):
+            labPollution.config(text="SUPERRRRR")
 
-    # All in the same time
-    elif(var1.get() == 1 and var2.get() == 1 and var3.get() == 1 and var4.get() == 1):
-        labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 0 & var2.get() == 1 & var3.get() == 1 & var4.get() == 1):
+            labPollution.config(text="SUPERRRRR")
+        elif(var1.get() == 1 & var2.get() == 0 & var3.get() == 1 & var4.get() == 1):
+            labPollution.config(text="SUPERRRRR")
+
+        # All in the same time
+        elif(var1.get() == 1 & var2.get() == 1 & var3.get() == 1 & var4.get() == 1):
+            labPollution.config(text="SUPERRRRR")
+        else:
+            labPollution.config(text="Aucun selectionné")
 
 
 # Init1isation de l'interface Tkinter
