@@ -64,6 +64,7 @@ def openDisplayImpact():
                  command=openDisplaySolution, bg="#3C3B6E", fg="white")
     bu5.place(x=70, y=280, width=200, height=20)
     bu6 = Button(displayImpact, text="Danemark",
+                 
                  command=openDisplaySolution, bg="#D1050C", fg="white")
     bu6.place(x=70, y=310, width=200, height=20)
     bu7 = Button(displayImpact, text="Côte d'Ivoire",
@@ -73,12 +74,12 @@ def openDisplayImpact():
     labelAction = Label(displayImpact, image=None, bg="#ffe599")
     labelAction.place(x=290, y=150, width=800, height=500)
 
-    image2 = Image.open(convertImage("Image/logo.png"))
-    image2 = image2.resize((200, 200), Image.ANTIALIAS)
-    img2 = ImageTk.PhotoImage(image2)
+    image5 = Image.open(convertImage("Image/logo.png"))
+    image5 = image5.resize((200, 200), Image.ANTIALIAS)
+    img5 = ImageTk.PhotoImage(image5)
     labelGraph = Label(
         displayImpact,
-        image=img2, bg="#ffe599"
+        image=img5, bg="#ffe599"
     )
     labelGraph.place(x=1150, y=25)
 
@@ -146,12 +147,12 @@ def openDisplayProblematique():
     lab6.place(x=30, y=360)
     lab6.config(padx=0)
 
-    image2 = Image.open(convertImage("Image/logo.png"))
-    image2 = image2.resize((200, 200), Image.ANTIALIAS)
-    img2 = ImageTk.PhotoImage(image2)
+    image4 = Image.open(convertImage("Image/logo.png"))
+    image4 = image4.resize((200, 200), Image.ANTIALIAS)
+    img4 = ImageTk.PhotoImage(image4)
     labelGraph = Label(
         displayProblematique,
-        image=img2, bg="#ffe599"
+        image=img4, bg="#ffe599"
     )
     labelGraph.place(x=1150, y=25)
 
@@ -192,12 +193,12 @@ def openDisplaySolution():
     lab4.place(x=30, y=260)
     lab4.config(padx=0)
 
-    image2 = Image.open(convertImage("Image/logo.png"))
-    image2 = image2.resize((200, 200), Image.ANTIALIAS)
-    img2 = ImageTk.PhotoImage(image2)
+    image3 = Image.open(convertImage("Image/logo.png"))
+    image3 = image3.resize((200, 200), Image.ANTIALIAS)
+    img3 = ImageTk.PhotoImage(image3)
     labelGraph = Label(
         displayMap,
-        image=img2, bg="#ffe599"
+        image=img3, bg="#ffe599"
     )
     labelGraph.place(x=1150, y=25)
 
@@ -349,7 +350,7 @@ def openDisplayMap():
 if (len(os.listdir("./ImageGen")) == 0):
     CreationImage()
 
-if (len(os.listdir("./ImageGen")) > 0):
+elif (len(os.listdir("./ImageGen")) > 0):
     window = Tk()
     window.minsize(width=1400, height=700)
     window.maxsize(width=1400, height=700)
@@ -410,8 +411,8 @@ if (len(os.listdir("./ImageGen")) > 0):
 
     window.mainloop()
 
-# vider la memoire cache
-if (window.destroy):
-    files = os.listdir("./ImageGen")
-    for i in range(0, len(files)):
-        os.remove('./ImageGen'+'/'+files[i])
+    # vider la memoire cache
+    if (window.destroy):
+        files = os.listdir("./ImageGen")
+        for i in range(0, len(files)):
+            os.remove('./ImageGen'+'/'+files[i])
