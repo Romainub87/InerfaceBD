@@ -219,26 +219,23 @@ def openDisplayMap():
     ##radioButton##
     var1 = IntVar()
     R1 = Checkbutton(displayMap, text="Pollution", variable=var1, onvalue=1, offvalue=0,
-                     bg="#ffe599", command=isClick)
+                      command=isClick)
     R1.place(x=30, y=180)
-    R1.config(padx=0)
+    
     var2 = IntVar()
     R2 = Checkbutton(displayMap, text="Niveau de la mer", variable=var2, onvalue=1, offvalue=0,
-                     bg="#ffe599", command=isClick)
+                     command=isClick)
     R2.place(x=30, y=210)
-    R2.config(padx=0)
 
     var3 = IntVar()
     R3 = Checkbutton(displayMap, text="Nombre d'habitants", variable=var3, onvalue=1, offvalue=0,
-                     bg="#ffe599", command=isClick)
+                      command=isClick)
     R3.place(x=30, y=240)
-    R3.config(padx=0)
 
     var4 = IntVar()
     R4 = Checkbutton(displayMap, text="PIB", variable=var4, onvalue=1, offvalue=0,
-                     bg="#ffe599", command=isClick)
+                      command=isClick)
     R4.place(x=30, y=270)
-    R4.config(padx=0)
 
     labPollution = Label(displayMap, text='empty',
                          bg="#ffe599", font=("Segoe UI Semibold", 10))
