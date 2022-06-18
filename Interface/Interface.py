@@ -25,7 +25,6 @@ def menu(display):
 
 
 def openDisplayImpact():
-
     displayImpact = Toplevel(window)
     displayImpact.configure(bg="#ffe599")
     displayImpact.geometry("1920x1080")
