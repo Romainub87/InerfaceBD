@@ -338,9 +338,6 @@ def openDisplayMap():
                          bg="#ffe599", font=("Segoe UI Semibold", 20))
     labPollution.pack()
 
-    labGraphe = Label(displayMap, bg="#ffe599")
-    labGraphe.place(x=0, y=445)
-
     labMap = Label(displayMap, bg="#ffe599")
     labMap.place(x=450, y=125)
     
@@ -355,38 +352,37 @@ def openDisplayMap():
     
     grPib = Image.open(convertImage("Interface/ImageGen/PIB.png")).resize((650, 400), Image.ANTIALIAS)
     grPib = ImageTk.PhotoImage(grPib)
+    
+    mapSea = Image.open(convertImage("Interface/Image/sealevel.png")).resize((650, 400), Image.ANTIALIAS)
+    mapSea = ImageTk.PhotoImage(mapSea)
+    
+    mapTemp = Image.open(convertImage("Interface/Image/meanTemperature.png")).resize((650, 400), Image.ANTIALIAS)
+    mapTemp = ImageTk.PhotoImage(mapTemp)
 
     def isClick():
 
         # Aucun sélectionné
         if ((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Aucun sélectionné")
-            labGraphe.config(image="")
             labMap.config(image="")
         # 1 sélectionné
         elif ((var1.get() == 1) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Pollution")
-            labGraphe.config(image=grPoll)
-            labMap.config(image="")
+            labMap.config(image=grPoll)
         elif((var1.get() == 0) & (var2.get() == 1) & (var3.get() == 0) & (var4.get() == 0)):
             labPollution.config(text="Niveau de la mer")
-            labGraphe.config(image="")
-            labMap.config(image="")
+            labMap.config(image=mapSea)
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 0)):
             labPollution.config(text="Nb Habitants")
-            labGraphe.config(image="")
             labMap.config(image=grHab)
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 0) & (var4.get() == 1)):
             labPollution.config(text="PIB")
-            labGraphe.config(image="")
             labMap.config(image=grPib)
         elif((var1.get() == 0) & (var2.get() == 0) & (var3.get() == 1) & (var4.get() == 1)):
             labPollution.config(text="PIB/Nb d'habitant")
-            labGraphe.config(image="")
             labMap.config(image=grPibHab)
         else:
             labPollution.config(text="Données imcompatibles")
-            labGraphe.config(image="")
             labMap.config(image="")
 
     lab1 = Label(displayMap, text="Choisissez votre valeur de mesure (plusieurs choix possibles): ",
@@ -404,27 +400,17 @@ def openDisplayMap():
     labelGraph.place(x=1150, y=25)
 
     ##radioButton##
-    var1 = IntVar()
-    var1.set(0)
-    R1 = Checkbutton(displayMap, text="Pollution", variable=var1,
-                     onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
+    R1 = Radiobutton(displayMap, text="Pollution", value=1, command=isClick, bg="#ffe599")
     R1.place(x=30, y=180)
 
-    var2 = IntVar()
-    var2.set(0)
-    R2 = Checkbutton(displayMap, text="Niveau de la mer",
-                     variable=var2, onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
+    R2 = Radiobutton(displayMap, text="Niveau de la mer",
+                     value=2, command=isClick, bg="#ffe599")
     R2.place(x=30, y=210)
 
-    var3 = IntVar()
-    var3.set(0)
-    R3 = Checkbutton(displayMap, text="Nombre d'habitants",
-                     variable=var3, onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
+    R3 = Radiobutton(displayMap, text="Nombre d'habitants",value=3, command=isClick, bg="#ffe599")
     R3.place(x=30, y=240)
 
-    var4 = IntVar()
-    var4.set(0)
-    R4 = Checkbutton(displayMap, text="PIB", variable=var4,
+    R4 = Radiobutton(displayMap, text="PIB", variable=var4,
                      onvalue=1, offvalue=0, command=isClick, bg="#ffe599")
     R4.place(x=30, y=270)
 
